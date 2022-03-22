@@ -1,0 +1,40 @@
+    - implement the new checkpoint ID recognition: must be backaward compatible.
+    - implement a mechanism in the decoder tool to first separate CHECKPOINT data from different clusters: different cores might be running images of different endianness
+        * reasons to move the endianness handling to the insert_debug tool:
+            - once the debuglist is generated, all decoding effort will not need to spend time to handle endianness
+        * reasons that we need to move the endianness handling to the decoder tool:
+            - even though the debuglist file can be generated so that the ID's are endianness awared, the data in the
+            CHECKPOINT is not. so we will need to manipulate the data, and the IDs, in the decoder
+            and the endianness info needs to be in the debuglist file so that we can correctly decode traces running on
+            different cores that use different endianness.
+            - the insert_debug tool needs to be awared of the host endianness only. this one will be decided by an input parameter.
+            then the tool will produce CHECKPOINT IDs in ASCII so it would not be affected by the endianness (regardless
+                    of the endianness of the build-host and the decode-host, IDs in ASCII will always be interpreted correctly)
+            the tool will describe the endianess of the target in the beginning of the debuglist file.
+            - the decoder tool, reads the endianess info from the debuglist file. based on the endianess of the host,
+            will know what to do with the trace data.
+            !!! however, there will be packages that is not aware of the endianness of the platform! you CAN NOT put the
+            target endianness info into the debuglist file!
+            ????????? how to feed the decoder the info of target endianness??????
+        * there is only one CHECKPOINT library build, and it will need to work with different packages that might be
+        running on different platforms with different endianness. therefore the handling of endiannes has to be in
+        the tool.
+
+        THE PLAN:
+            X we will require the debuglist files to be named as <package name>.debuglist
+            X for backaward compatability we will allow the use of the file named debuglist, but in this case there will
+            X be no handling of the endianness for the old style debuglist (we will assume the data is in little endianness, that is used by PHX)
+            X there will be a CHECKPOINT configuration file, that is read before the decoding starts. 
+            X in the configuration file there will be rules defining which package is running little endian/big endian.
+            X the decoder tool, after reading in the configuration file, based on the debuglist file name, will know how
+            X to handle the endianness.
+
+            we will determine the endianness by checking the register cluster the CHECKPOINT data is sent from: we
+            cannot use the package info for this purpose because in the raw file there is no way to tell what data is
+            from which package.
+            therefore in the configuration file we will define the endianness of the checkpoint data depending on which
+            register cluster they are from.
+
+    - implement the endianness handling to the decode tool
+    - implement the package id to the insert_debug tool
+    - implement corresponding changes in the decoder tool

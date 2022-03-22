@@ -1,0 +1,68 @@
+pane	apollo	1	:testing pelican changes in apollo	0	:	0	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx/components/pelican	0	zsh	:
+pane	apollo	1	:testing pelican changes in apollo	0	:	1	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx	1	zsh	:
+pane	apollo	2	:phx	1	:*	0	:/work/huanyang/phx/scm/phx/components/bsp/ei	1	zsh	:
+pane	apollo	2	:phx	1	:*	1	:/work/huanyang/phx/scm/phx	0	zsh	:
+pane	apollo	4	:hppk	0	:-Z	0	:/work/huanyang/apollo.trunk/apollo-core/scm/phx/components/pelican	1	zsh	:
+pane	apollo	4	:hppk	0	:-Z	1	:/work/huanyang/apollo.trunk/apollo-core/scm/phx/components	0	zsh	:
+pane	debug	2	:admin_tools	0	:	0	:/work/huanyang/admin_tools	1	zsh	:
+pane	debug	2	:admin_tools	0	:	1	:/work/huanyang/linux_service/checkpoint-support	0	zsh	:
+pane	debug	3	:trying get_cpu	0	:	0	:/work/huanyang/serviceware/framework/src/checkpoint_noise/src (deleted)	1	zsh	:
+pane	debug	3	:trying get_cpu	0	:	1	:/home/huanyang/tmp/checkpoint_test_linux (deleted)	0	zsh	:
+pane	debug	3	:trying get_cpu	0	:	2	:/work/huanyang/serviceware/opkgbuild/checkpoint_noise (deleted)	0	zsh	:
+pane	debug	3	:trying get_cpu	0	:	3	:/home/huanyang	0	zsh	:
+pane	debug	6	:decoder in rust	0	:	0	:/home/huanyang/workplace/rust.decode/decode	1	zsh	:
+pane	debug	6	:decoder in rust	0	:	1	:/home/huanyang/workplace/rust.decode/decode	0	cargo-watch	:
+pane	debug	6	:decoder in rust	0	:	2	:/home/huanyang/workplace/rust.decode/decode	0	zsh	:
+pane	debug	8	:jedi linux kernel	0	:#	0	:/work/huanyang/jedi_linux_kernel (deleted)	1	zsh	:
+pane	debug	9	:framework	0	:#	0	:/work/huanyang/framework/framework/src/lib_hptrace	1	zsh	:
+pane	debug	9	:framework	0	:#	1	:/work/huanyang/framework/opkgbuild/libhptrace	0	zsh	:
+pane	debug	10	:build latest rust	0	:-	0	:/home/huanyang/software	1	zsh	:
+pane	debug	12	:Dart tool repo	0	:#	0	:/work/darts	1	zsh	:
+pane	debug	13	:new snoop	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	13	:new snoop	0	:#	1	:/work/new.apollo/apollo/scm/tools/hp (deleted)	1	zsh	:
+pane	debug	14	:linux kernel (used for trying vdso)	1	:*	0	:/work/huanyang/linux_kernel	0	zsh	:
+pane	debug	14	:linux kernel (used for trying vdso)	1	:*	1	:/work/huanyang/linux_kernel	1	zsh	:
+pane	experiment	3	:using sed in vim	0	:#-Z	0	:/home/huanyang/tmp	0	zsh	:
+pane	experiment	3	:using sed in vim	0	:#-Z	1	:/home/huanyang/tmp	1	zsh	:
+pane	experiment	4	:modeling different size of array between base and derived classes	1	:*	0	:/home/huanyang/tmp	1	zsh	:
+pane	sirius	1	:hardfreeze branch (fix an issue where util function should receive a pointer to video_page, but not trying to get a page by themselves)	0	:#Z	0	:/work/huanyang/sirius_rivers_frz/pelican	1	zsh	:
+pane	sirius	1	:hardfreeze branch (fix an issue where util function should receive a pointer to video_page, but not trying to get a page by themselves)	0	:#Z	1	:/work/huanyang/sirius_rivers_frz/sirius/opkgbuild/teton_sox	0	zsh	:
+pane	sirius	2	:SoX with thread switching info	0	:#	0	:/work/huanyang/sirius_thread_switching_checkpoint/sirius	0	zsh	:
+pane	sirius	2	:SoX with thread switching info	0	:#	1	:/work/huanyang/sirius_thread_switching_checkpoint/sirius/opkgbuild	1	zsh	:
+pane	sirius	3	:checking traces	0	:-Z	0	:/home/huanyang/tmp	1	zsh	:
+pane	sirius	3	:checking traces	0	:-Z	1	:/work/huanyang/sirius_thread_switching_checkpoint/sirius	0	zsh	:
+pane	sirius	4	:remove more cvpdata	1	:*	0	:/work/huanyang/sirius_opal_module_2/pelican	1	zsh	:
+pane	sirius	4	:remove more cvpdata	1	:*	1	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx (deleted)	0	zsh	:
+pane	sirius	4	:remove more cvpdata	1	:*	2	:/work/huanyang/sirius_opal_module_2/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	5	:porting changes to trunk	0	:#Z	0	:/work/huanyang/sirius_trunk_2/pelican	1	zsh	:
+pane	sirius	5	:porting changes to trunk	0	:#Z	1	:/work/huanyang/sirius_trunk_reset/pelican (deleted)	0	zsh	:
+pane	sirius	7	:master/trunk: for the powermanager module	0	:#	0	:/work/huanyang/sirius_trunk/pelican	1	zsh	:
+pane	sirius	7	:master/trunk: for the powermanager module	0	:#	1	:/work/huanyang/sirius_trunk/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	7	:master/trunk: for the powermanager module	0	:#	2	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx	0	zsh	:
+pane	sirius	8	:trunk	0	:	0	:/work/huanyang/sirius_trunk_2/pelican/drivers/eiVideo	1	zsh	:
+pane	sirius	8	:trunk	0	:	1	:/work/huanyang/sirius_trunk_2/sirius	0	zsh	:
+pane	sirius	10	:snoop at unexpected writes	0	:#	0	:/work/huanyang/sirius_bring_tdmp_dump_back/pelican (deleted)	1	tig	:
+pane	sirius	10	:snoop at unexpected writes	0	:#	1	:/work/huanyang/sirius_bring_tdmp_dump_back/sirius/opkgbuild/teton_sox (deleted)	0	zsh	:
+window	apollo	1	0	:	b7e0,320x95,0,0{160x95,0,0,2,159x95,161,0,456}
+window	apollo	2	1	:*	dd6b,320x95,0,0{160x95,0,0,3,159x95,161,0,4}
+window	apollo	4	0	:-Z	6ad1,320x95,0,0{160x95,0,0,235,159x95,161,0,250}
+window	debug	2	0	:	39d7,320x95,0,0{160x95,0,0,10,159x95,161,0,427}
+window	debug	3	0	:	3e24,320x95,0,0{160x95,0,0[160x48,0,0,305,160x46,0,49,306],159x95,161,0[159x48,161,0,304,159x46,161,49,307]}
+window	debug	6	0	:	a3d3,320x95,0,0{161x95,0,0,432,158x95,162,0[158x66,162,0,433,158x28,162,67,539]}
+window	debug	8	0	:#	e4f0,319x94,0,0,21
+window	debug	9	0	:#	b8bc,319x94,0,0{159x94,0,0,22,159x94,160,0,302}
+window	debug	10	0	:-	72a0,320x95,0,0,446
+window	debug	12	0	:#	e4d2,320x95,0,0,23
+window	debug	13	0	:#	b0cd,319x94,0,0{159x94,0,0,24,159x94,160,0,25}
+window	debug	14	1	:*	b2ff,320x95,0,0{160x95,0,0,26,159x95,161,0,27}
+window	experiment	3	0	:#-Z	30cb,319x94,0,0{159x94,0,0,31,159x94,160,0,32}
+window	experiment	4	1	:*	64f3,319x94,0,0,33
+window	sirius	1	0	:#Z	18bf,319x94,0,0{159x94,0,0,55,159x94,160,0,523}
+window	sirius	2	0	:#	526b,319x94,0,0{158x94,0,0,35,160x94,159,0,36}
+window	sirius	3	0	:-Z	79cf,320x95,0,0{160x95,0,0,37,159x95,161,0,471}
+window	sirius	4	1	:*	58a1,320x95,0,0{160x95,0,0,39,159x95,161,0[159x47,161,0,40,159x47,161,48,510]}
+window	sirius	5	0	:#Z	1ad4,320x95,0,0{160x95,0,0,369,159x95,161,0,414}
+window	sirius	7	0	:#	b50c,320x95,0,0{160x95,0,0,344,159x95,161,0[159x48,161,0,496,159x46,161,49,505]}
+window	sirius	8	0	:	2ad5,320x95,0,0{160x95,0,0,412,159x95,161,0,549}
+window	sirius	10	0	:#	fad3,320x95,0,0{160x95,0,0,363,159x95,161,0,374}
+state	sirius	

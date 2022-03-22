@@ -1,0 +1,64 @@
+pane	apollo	1	:testing pelican changes in apollo	0	:#	0	:/work/huanyang/apollo.test/apollo-core/scm/phx	1	zsh	:
+pane	apollo	1	:testing pelican changes in apollo	0	:#	1	:/work/huanyang/apollo/apollo-core/scm/phx	0	zsh	:
+pane	apollo	2	:phx	0	:-Z	0	:/work/huanyang/phx/scm/phx	0	zsh	:
+pane	apollo	2	:phx	0	:-Z	1	:/work/huanyang/phx/scm/phx	1	zsh	:
+pane	apollo	3	:hppk	1	:*	0	:/work/huanyang/apollo.hppk/apollo-core/scm/phx/components/pacific	1	zsh	:
+pane	debug	1	:plang	0	:#	0	:/work/huanyang/plang	0	zsh	:
+pane	debug	1	:plang	0	:#	1	:/work/huanyang/framework/opkgbuild/libhptrace	1	zsh	:
+pane	debug	1	:plang	0	:#	2	:/work/huanyang/plang/opkgbuild/print_languages_full	0	zsh	:
+pane	debug	2	:admin_tools	0	:#-	0	:/work/huanyang/admin_tools	1	zsh	:
+pane	debug	2	:admin_tools	0	:#-	1	:/work/huanyang/admin_tools	0	python	:
+pane	debug	3	:hptrace driver using device tree	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	2	:/work/huanyang/linux_kernel/m_linux/drivers	1	zsh	:
+pane	debug	4	:decode helper script	1	:*	0	:/home/huanyang/bin	1	zsh	:
+pane	debug	4	:decode helper script	1	:*	1	:/work/huanyang/plang/opkgbuild/print_languages_full	0	zsh	:
+pane	debug	5	:thread id checkpoints on sirius	0	:	0	:/work/huanyang/apollo.thread.id.checkpoint/apollo-core/scm/phx/components/os	1	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	2	:/home/huanyang	1	zsh	:
+pane	debug	11	:tokenizer	0	:#	0	:/work/huanyang/admin_tools	1	zsh	:
+pane	debug	11	:tokenizer	0	:#	1	:/work/huanyang/linux_service/opkgbuild/checkpoint-support	0	zsh	:
+pane	debug	12	:Dart tool repo	0	:#	0	:/work/darts	1	zsh	:
+pane	debug	13	:new snoop	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	13	:new snoop	0	:#	1	:/work/new.apollo/apollo/scm/tools/hp	1	zsh	:
+pane	debug	14	:linux kernel	0	:#	0	:/work/huanyang/linux_kernel	0	zsh	:
+pane	debug	14	:linux kernel	0	:#	1	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	debug	14	:linux kernel	0	:#	2	:/work/huanyang/linux_kernel/opkgbuild/kernel-tux-smp-4-9	0	zsh	:
+pane	debug	14	:linux kernel	0	:#	3	:/work/huanyang/sirius_dist	1	zsh	:
+pane	experiment	1	:rust	0	:#-	0	:/home/huanyang/workplace/rust/check.integration/checkintegration	1	zsh	:
+pane	experiment	1	:rust	0	:#-	1	:/home/huanyang/tmp	0	zsh	:
+pane	experiment	2	:tmux	1	:*	0	:/home/huanyang/software/neovim	1	zsh	:
+pane	experiment	3	:universal ctags	0	:#	0	:/home/huanyang/software/ctags	1	zsh	:
+pane	sirius	1	:shapertable refcount	0	:#-	0	:/work/huanyang/sirius_shaper_table_refcount/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	1	:shapertable refcount	0	:#-	1	:/work/huanyang/sirius_shaper_table_refcount/pelican	1	zsh	:
+pane	sirius	3	:checking traces	0	:#	0	:/home/huanyang/tmp	1	zsh	:
+pane	sirius	4	:remove cvpdata data - if integrated will be to remove tdmpinstructionsets	1	:*Z	0	:/work/huanyang/sirius_remove_page_state/pelican	1	zsh	:
+pane	sirius	4	:remove cvpdata data - if integrated will be to remove tdmpinstructionsets	1	:*Z	1	:/work/huanyang/sirius_remove_page_state/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	5	:kurt mode full page	0	:#Z	0	:/projects/sirius/work/huanyang/sirius_kurt_mode/pelican	0	zsh	:
+pane	sirius	5	:kurt mode full page	0	:#Z	1	:/projects/sirius/work/huanyang/sirius_kurt_mode/sirius	1	zsh	:
+pane	video sharing	1	:video firmware introduction	1	:*	0	:/home/huanyang	1	zsh	:
+pane	video sharing	2	:source	0	:#-	0	:/work/huanyang/sirius_vanilla/pelican	1	zsh	:
+window	apollo	1	0	:#	37df,320x95,0,0{160x95,0,0,1,159x95,161,0,273}
+window	apollo	2	0	:-Z	dd6b,320x95,0,0{160x95,0,0,3,159x95,161,0,4}
+window	apollo	3	1	:*	c942,320x95,0,0,5
+window	debug	1	0	:#	1d9d,320x95,0,0{160x95,0,0[160x48,0,0,186,160x46,0,49,236],159x95,161,0,7}
+window	debug	2	0	:#-	592b,320x95,0,0{159x95,0,0,8,160x95,160,0,9}
+window	debug	3	0	:#	f93f,320x95,0,0{159x95,0,0[159x47,0,0,10,159x47,0,48,11],160x95,160,0,12}
+window	debug	4	1	:*	ead4,320x95,0,0{160x95,0,0,257,159x95,161,0,265}
+window	debug	5	0	:	f29b,320x95,0,0,242
+window	debug	9	0	:#	307e,320x95,0,0{160x95,0,0,28,159x95,161,0[159x47,161,0,29,159x47,161,48,30]}
+window	debug	11	0	:#	d9d9,320x95,0,0{160x95,0,0,33,159x95,161,0,378}
+window	debug	12	0	:#	64d4,320x95,0,0,34
+window	debug	13	0	:#	32ff,320x95,0,0{160x95,0,0,35,159x95,161,0,36}
+window	debug	14	0	:#	2eee,320x95,0,0{160x95,0,0[160x47,0,0,37,160x47,0,48,38],159x95,161,0[159x47,161,0,39,159x47,161,48,40]}
+window	experiment	1	0	:#-	c150,320x95,0,0{173x95,0,0,42,146x95,174,0,43}
+window	experiment	2	1	:*	b2a1,320x95,0,0,376
+window	experiment	3	0	:#	e4d7,320x95,0,0,47
+window	sirius	1	0	:#-	fad4,320x95,0,0{160x95,0,0,366,159x95,161,0,384}
+window	sirius	3	0	:#	64d4,320x95,0,0,53
+window	sirius	4	1	:*Z	7ad0,320x95,0,0{160x95,0,0,306,159x95,161,0,310}
+window	sirius	5	0	:#Z	2f99,319x94,0,0{121x94,0,0,56,197x94,122,0,57}
+window	video sharing	1	1	:*	e4d5,320x95,0,0,64
+window	video sharing	2	0	:#-	e4d6,320x95,0,0,65
+state	apollo	experiment

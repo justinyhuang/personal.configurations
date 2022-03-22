@@ -1,0 +1,69 @@
+pane	apollo	2	:79 error	1	:*	0	:/home/huanyang	0	ssh	:
+pane	apollo	2	:79 error	1	:*	1	:/home/huanyang	1	ssh	:
+pane	debug	1	:checkpoint lib	0	:	0	:/home/huanyang	0	ssh	:
+pane	debug	1	:checkpoint lib	0	:	1	:/home/huanyang	1	ssh	:
+pane	debug	2	:serial debug <-> checkpoint	0	:	0	:/home/huanyang	0	ssh	:
+pane	debug	2	:serial debug <-> checkpoint	0	:	1	:/home/huanyang	1	ssh	:
+pane	debug	3	:clearwater dist	0	:	0	:/home/huanyang	1	ssh	:
+pane	debug	4	:checkpoint kernel driver	0	:#	0	:/home/huanyang	0	ssh	:
+pane	debug	4	:checkpoint kernel driver	0	:#	1	:/home/huanyang	1	ssh	:
+pane	debug	5	:sirius package files scanner	0	:#	0	:/home/huanyang	0	ssh	:
+pane	debug	5	:sirius package files scanner	0	:#	1	:/home/huanyang	1	ssh	:
+pane	debug	5	:sirius package files scanner	0	:#	2	:/home/huanyang	0	ssh	:
+pane	debug	6	:testing dynamic library	0	:#	0	:/home/huanyang/checkpoint.on.linux.test	1	zsh	:
+pane	debug	6	:testing dynamic library	0	:#	1	:/home/huanyang/checkpoint.on.linux.test	0	vim	:
+pane	debug	7	:new buildcatalog and insertdebug	0	:	0	:/home/huanyang/Dropbox/Configurations/.tmux	0	ssh	:
+pane	debug	7	:new buildcatalog and insertdebug	0	:	1	:/home/huanyang/admin_tools/checkpoint_siriusv2	1	ssh	:
+pane	debug	8	:percent s scanner	0	:	0	:/home/huanyang/percent.s.scanner	1	bash	:
+pane	debug	8	:percent s scanner	0	:	1	:/home/huanyang	0	ssh	:
+pane	debug	8	:percent s scanner	0	:	2	:/home/huanyang	0	ssh	:
+pane	debug	9	:decode snooped trace	0	:#	0	:/home/huanyang	0	ssh	:
+pane	debug	9	:decode snooped trace	0	:#	1	:/home/huanyang	1	ssh	:
+pane	debug	10	:simulator checkpoint to debug_	0	:	0	:/home/huanyang	0	ssh	:
+pane	debug	10	:simulator checkpoint to debug_	0	:	1	:/home/huanyang	1	ssh	:
+pane	debug	10	:simulator checkpoint to debug_	0	:	2	:/home/huanyang	0	ssh	:
+pane	debug	11	:figure how to build a package with its own process	0	:	0	:/home/huanyang	0	ssh	:
+pane	debug	11	:figure how to build a package with its own process	0	:	1	:/home/huanyang	1	ssh	:
+pane	debug	12	:default checkpointa	0	:-Z	0	:/home/huanyang	0	ssh	:
+pane	debug	12	:default checkpointa	0	:-Z	1	:/home/huanyang	1	ssh	:
+pane	debug	13	:zsh	1	:*	0	:/home/huanyang/Dropbox/Configurations/.tmux/plugins/tmux-resurrect-master	1	zsh	:
+pane	experiment	1	:task	0	:-	0	:/home/huanyang/software/task-2.5.1	1	zsh	:
+pane	experiment	2	:exit	0	:	0	:/home/huanyang/software/vim80	1	ssh	:
+pane	experiment	3	:tmate plugin	1	:*	0	:/home/huanyang/Dropbox/Configurations/Vim/.vim/bundle	1	zsh	:
+pane	experiment	3	:tmate plugin	1	:*	1	:/home/huanyang/Dropbox/Configurations/.tmux/src/github.com/gdamore/tcell	0	ssh	:
+pane	tux  	1	:teton 2->2 copy underrun	0	:Z	0	:/home/huanyang	0	ssh	:
+pane	tux  	1	:teton 2->2 copy underrun	0	:Z	1	:/work	0	ssh	:
+pane	tux  	1	:teton 2->2 copy underrun	0	:Z	2	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	1	ssh	:
+pane	tux  	2	:doxygen pictures	0	:	0	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	1	ssh	:
+pane	tux  	3	:more modularization	1	:*	0	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	1	ssh	:
+pane	tux  	3	:more modularization	1	:*	1	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	0	ssh	:
+pane	tux  	3	:more modularization	1	:*	2	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	0	ssh	:
+pane	tux  	4	:register download feature	0	:-	0	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	0	ssh	:
+pane	tux  	4	:register download feature	0	:-	1	:/projects/sirius/work/huanyang/sirius_kurt/sirius/opkgbuild/pelican_src_local	1	ssh	:
+pane	tux  	5	:video assert for too long image	0	:	0	:/home/huanyang	1	ssh	:
+pane	tux  	5	:video assert for too long image	0	:	1	:/home/huanyang	0	ssh	:
+pane	tux  	6	:ssh	0	:	0	:/home/huanyang	1	ssh	:
+window	apollo	2	1	:*	dd6b,320x95,0,0{160x95,0,0,3,159x95,161,0,4}
+window	debug	1	0	:	dad5,320x95,0,0{122x95,0,0,358,197x95,123,0,366}
+window	debug	2	0	:	d9d8,320x95,0,0{160x95,0,0,11,159x95,161,0,197}
+window	debug	3	0	:	64d2,320x95,0,0,13
+window	debug	4	0	:#	19d8,320x95,0,0{160x95,0,0,14,159x95,161,0,156}
+window	debug	5	0	:#	dd11,320x95,0,0{160x95,0,0,375,159x95,161,0[159x47,161,0,735,159x47,161,48,736]}
+window	debug	6	0	:#	39d1,320x95,0,0{160x95,0,0,18,159x95,161,0,408}
+window	debug	7	0	:	72fd,320x95,0,0{160x95,0,0,20,159x95,161,0,57}
+window	debug	8	0	:	edda,320x95,0,0{160x95,0,0[160x47,0,0,172,160x47,0,48,174],159x95,161,0,173}
+window	debug	9	0	:#	2ad4,320x95,0,0{160x95,0,0,211,159x95,161,0,277}
+window	debug	10	0	:	fd11,320x95,0,0{160x95,0,0,295,159x95,161,0[159x47,161,0,312,159x47,161,48,319]}
+window	debug	11	0	:	dad4,320x95,0,0{160x95,0,0,581,159x95,161,0,585}
+window	debug	12	0	:-Z	7ad7,320x95,0,0{160x95,0,0,747,159x95,161,0,759}
+window	debug	13	1	:*	32a3,320x95,0,0,767
+window	experiment	1	0	:-	f29e,320x95,0,0,207
+window	experiment	2	0	:	729d,320x95,0,0,215
+window	experiment	3	1	:*	fad5,320x95,0,0{160x95,0,0,518,159x95,161,0,557}
+window	tux  	1	0	:Z	c09d,320x95,0,0{160x95,0,0,30,159x95,161,0[159x47,161,0,31,159x47,161,48,124]}
+window	tux  	2	0	:	f29c,320x95,0,0,262
+window	tux  	3	1	:*	2866,200x59,0,0{100x59,0,0,274,99x59,101,0[99x29,101,0,281,99x29,101,30,282]}
+window	tux  	4	0	:-	2ad2,320x95,0,0{160x95,0,0,423,159x95,161,0,490}
+window	tux  	5	0	:	7ad6,320x95,0,0{160x95,0,0,536,159x95,161,0,549}
+window	tux  	6	0	:	329f,320x95,0,0,744
+state	debug	

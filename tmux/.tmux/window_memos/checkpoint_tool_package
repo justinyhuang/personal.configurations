@@ -1,0 +1,12 @@
+much work need to be done for this tool:
+    v how the debuglist can be generated?
+    v how about the layout of the CHECKPOINT ID?
+    v how to read the library ID when building a package?
+      we will first change the tool so that it generates debuglist files for every compilation units, and the we will
+      combine all the debuglist files together.
+
+    x how to configure the makefile so that we only process the files that need/have checkpoints?
+      once a package has CHECKPOINT enabled all the files being built will be scanned.
+    - how to generate string checkpoints
+    - how to configure the debug levels
+    - need Michael's input

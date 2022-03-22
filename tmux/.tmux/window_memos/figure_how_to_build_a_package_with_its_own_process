@@ -1,0 +1,2 @@
+we need a process for our CHECKPOINT library, and this task is to figure out how:
+    - i find a package, libshell, that i can use as an example, to start a process of the library in the _init function

@@ -1,0 +1,15 @@
+- introducing D
+
+- Demo
+    - timing
+    - features
+
+- Why
+    - faster decoding
+    - more convinient features
+
+- How
+    - using Rust
+    - Parallel Decode
+    - Keep Data in RAM
+    - Avoid Unnecessary Processing

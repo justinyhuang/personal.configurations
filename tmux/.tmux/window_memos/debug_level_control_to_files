@@ -1,0 +1,8 @@
+the current status is that we need to specify want_checkpoint and CHECKPOINTB/C_COMPONENTS in the .mf files to enable
+CHECKPOINTB/C in components, -DRT_B and -DRT_C is not functioning as expected in Sirius.
+
+and we need to fix that!
+
+
+    - put your component into the list of CHECKPONITB/C_COMPONENTS will enable -DRT_B/C for the entire component
+    - current tool has a defect that "CHECKPOINTB (...)" is not recognized by the insert_debug tool

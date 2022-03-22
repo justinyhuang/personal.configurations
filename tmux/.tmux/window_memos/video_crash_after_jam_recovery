@@ -1,0 +1,1 @@
+the issue seems to be that we didn't recieve all the bottoms, look at the interrupt of the page that was jammed and also see how the pages get promoted after the jam.

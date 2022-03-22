@@ -1,0 +1,2 @@
+tmux split-window -h
+#tmux send-keys "ssh leslx36" C-m

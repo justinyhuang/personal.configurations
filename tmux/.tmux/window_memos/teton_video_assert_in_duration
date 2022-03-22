@@ -1,0 +1,2 @@
+need to figure out why we are not setting VideoDMAControl with the abort bit set, in ProgramVideo.
+we probably can try aborting video dma everytime when we see a top

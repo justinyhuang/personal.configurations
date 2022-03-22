@@ -1,0 +1,41 @@
+pane	apollo	1	:zsh	1	:*	0	:/work/huanyang/apollo.trunk/apollo-core/scm/phx/components/pelican	1	zsh	:
+pane	debug	1	:ESnooper	0	:-	0	:/work/huanyang/apollo.esnoop/apollo-core/scm/phx/components	1	nvim	:
+pane	debug	2	:checkpoint on linux	1	:*	0	:/work/huanyang/linux_service	1	nvim	:
+pane	debug	2	:checkpoint on linux	1	:*	1	:/work/huanyang/framework	0	nvim	:
+pane	debug	3	:plang	0	:#	0	:/work/huanyang/plang/plang/opkgbuild/print_languages_full	1	zsh	:
+pane	experiment	1	:rust netbot	0	:#-	0	:/home/huanyang/workplace/rust.netbot/netbot	1	nvim	:
+pane	experiment	1	:rust netbot	0	:#-	1	:/home/huanyang/workplace/rust.netbot/netbot	0	cargo-watch	:
+pane	experiment	2	:test	1	:*	0	:/home/huanyang/tmp (deleted)	0	nvim	:
+pane	experiment	2	:test	1	:*	1	:/home/huanyang/tmp (deleted)	1	zsh	:
+pane	sirius	1	:trunk: measure runtime filter checkpoint overhead	0	:	0	:/work/huanyang/sirius_trunk/pelican	1	zsh	:
+pane	sirius	1	:trunk: measure runtime filter checkpoint overhead	0	:	1	:/work/huanyang/sirius_trunk/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	2	:rivers: special build for ceivideoimpl asserts	0	:#	0	:/work/huanyang/sirius_rivers_frz/pelican	1	zsh	:
+pane	sirius	2	:rivers: special build for ceivideoimpl asserts	0	:#	1	:/work/huanyang/sirius_rivers_frz/sirius/opkgbuild/teton_sox	0	zsh	:
+pane	sirius	3	:for trace	1	:*	0	:/work2/tmp	1	zsh	:
+pane	sirius	4	:trunk: ceivideo optimization 2	0	:#	0	:/work/huanyang/sirius_trunk_2/pelican	0	zsh	:
+pane	sirius	4	:trunk: ceivideo optimization 2	0	:#	1	:/work/huanyang/sirius_trunk_2/sirius/opkgbuild/clearwater_sox	1	zsh	:
+pane	sirius	4	:trunk: ceivideo optimization 2	0	:#	2	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx	0	zsh	:
+pane	sirius	5	:trunk: fix recently introduced issue, revising globalISR	0	:#	0	:/work/huanyang/sirius_trunk_3/pelican	0	zsh	:
+pane	sirius	5	:trunk: fix recently introduced issue, revising globalISR	0	:#	1	:/work/huanyang/sirius_trunk_3/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	5	:trunk: fix recently introduced issue, revising globalISR	0	:#	2	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx	1	zsh	:
+pane	sirius	6	:rivers: new	0	:#-	0	:/work/huanyang/sirius_interrupt_safe_get_next_page/pelican	1	tig	:
+pane	sirius	6	:rivers: new	0	:#-	1	:/work/huanyang/sirius_interrupt_safe_get_next_page/sirius/opkgbuild/teton_sox	0	zsh	:
+pane	sirius	7	:trunk: tdmp capability investigation	0	:	0	:/work/huanyang/sirius_trunk_4/pelican/drivers/eiVideo/src	1	zsh	:
+pane	sirius	7	:trunk: tdmp capability investigation	0	:	1	:/work/huanyang/sirius_trunk_4/sirius/opkgbuild/clearwater_sox	0	nvim	:
+pane	sirius	8	:trunk: new	0	:#	0	:/work/huanyang/sirius_trunk_5/pelican	1	nvim	:
+pane	sirius	8	:trunk: new	0	:#	1	:/work2/grafit.decoder/grafithp_hw76748t/src	0	zsh	:
+window	apollo	1	1	:*	72a4,320x95,0,0,279
+window	debug	1	0	:-	64ef,319x94,0,0,10
+window	debug	2	1	:*	f0ce,319x94,0,0{159x94,0,0,49,159x94,160,0,50}
+window	debug	3	0	:#	e4f9,319x94,0,0,87
+window	experiment	1	0	:#-	dd2d,319x94,0,0{159x94,0,0,4,159x94,160,0,6}
+window	experiment	2	1	:*	b0cd,319x94,0,0{159x94,0,0,43,159x94,160,0,44}
+window	sirius	1	0	:	d6cd,320x95,0,0{159x95,0,0,1,160x95,160,0,127}
+window	sirius	2	0	:#	2ceb,320x95,0,0{159x95,0,0,7,160x95,160,0,13}
+window	sirius	3	1	:*	32a2,320x95,0,0,196
+window	sirius	4	0	:#	e85c,320x95,0,0{159x95,0,0,17,160x95,160,0[160x48,160,0,23,160x46,160,49,266]}
+window	sirius	5	0	:#	145e,320x95,0,0{159x95,0,0,28,160x95,160,0[160x47,160,0,29,160x47,160,48,176]}
+window	sirius	6	0	:#-	b8f7,320x95,0,0{159x95,0,0,138,160x95,160,0,148}
+window	sirius	7	0	:	d8f7,320x95,0,0{159x95,0,0,197,160x95,160,0,228}
+window	sirius	8	0	:#	a8f4,320x95,0,0{159x95,0,0,214,160x95,160,0,225}
+state	sirius	apollo

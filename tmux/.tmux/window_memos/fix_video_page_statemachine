@@ -1,0 +1,10 @@
+somehow when the issue occurred, the State of Plane 3 is not PRE_CONFIG, and plane 3 did not get to move to the
+CURRENT_PRINTING_PAGE, but stayed in NEXT_WAITING_PAGE.
+need to dump the state of the plane into trace so as to identify what went wrong.
+associated CR: 384616. my change to remove a firmware workaround has integrated, and hopefully can solve this issue
+
+the change doesn't fix the issue, which now seems to be: when a page is being printed and there is a punt, we try to
+abort and reset VideoPWM. after that, some counters in the ASIC doesn't seem to get to a clean state, if some channels
+still haven't received their bottom, these bottoms will come after the abort and after printing the next page.
+
+NEED TO TALK TO GENE!!

@@ -1,0 +1,9 @@
+investigating the Jedi tools to generate CHECKPOINT IDs into the auto-gen header files
+    - tokenanalyzer.py
+        this is not the generator, will look into it later
+    - tokenize.py
+        the function, __generateTokenDirective() seems to be the place where we will put our floating point hack in.
+            this function belongs to the Token class
+        identifyFloatingPointData() is the function i wrote to identify the floating point data in the CHECKPOINT
+        i removed tailing semi-columns
+        i removed some unnecessary str() calls

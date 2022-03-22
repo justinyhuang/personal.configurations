@@ -1,0 +1,4 @@
+Kurt requests printing kurt mode image to full page. 
+i will need to first get the size of memory required for printing a full page image.
+and then try allocating enough memory for the page buffer.
+if that is not feasible will need to probably talk to Paddy on how to get large memory in a private bulid.

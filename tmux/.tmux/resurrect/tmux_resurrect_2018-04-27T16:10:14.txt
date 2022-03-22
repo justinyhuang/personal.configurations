@@ -1,0 +1,97 @@
+pane	apollo	1	:zsh	1	:*	0	:/work/huanyang/apollo.test/apollo-core/scm/phx/components/pelican/drivers/eiVideo (deleted)	1	nvim	:
+pane	apollo	1	:zsh	1	:*	1	:/work/huanyang/apollo.test/apollo-core/scm/phx/components	0	nvim	:
+pane	apollo	2	:phx	0	:#-	0	:/work/huanyang/phx/scm/phx/components	1	zsh	:
+pane	apollo	2	:phx	0	:#-	1	:/work/huanyang/phx/scm/phx/components/bsp/ei	0	zsh	:
+pane	apollo	3	:hppk	0	:#	0	:/work/huanyang/apollo.hppk/apollo-core/scm/phx/components/pacific	1	zsh	:
+pane	debug	1	:plang	1	:*Z	0	:/work/huanyang/sysroot_plang	0	zsh	:
+pane	debug	1	:plang	1	:*Z	1	:/work/huanyang/plang/opkgbuild/print_languages_full	1	nvim	:
+pane	debug	2	:admin_tools	0	:#Z	0	:/work/huanyang/admin_tools	1	nvim	:
+pane	debug	2	:admin_tools	0	:#Z	1	:/work/huanyang	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	0	:/work/huanyang/sirius_video_modularization/sirius (deleted)	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	1	:/work/huanyang/sirius_video_modularization/sirius/hw/src/board_cufflink/src (deleted)	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	2	:/work/huanyang/linux_kernel/m_linux/drivers	1	zsh	:
+pane	debug	4	:decode.py	0	:#	0	:/work/huanyang/plang.new/plang (deleted)	1	zsh	:
+pane	debug	4	:decode.py	0	:#	1	:/work/huanyang/plang.new/plang/opkgbuild/print_languages_full (deleted)	0	zsh	:
+pane	debug	5	:libhptrace	0	:#-	0	:/work/huanyang/framework/opkgbuild/libhptrace	0	zsh	:
+pane	debug	5	:libhptrace	0	:#-	1	:/work/huanyang/framework	1	nvim	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	0	:/home/huanyang/workplace/mmap.shared.memory	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	1	:/home/huanyang/workplace/mmap.shared.memory	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	2	:/home/huanyang	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	3	:/home/huanyang	1	zsh	:
+pane	debug	7	:percent s scanner	0	:#	0	:/home/huanyang/workplace/percent.s.scanner	0	zsh	:
+pane	debug	7	:percent s scanner	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	7	:percent s scanner	0	:#	2	:/work	1	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	2	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	3	:/home/huanyang	1	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	2	:/home/huanyang	1	zsh	:
+pane	debug	10	:testing CHECKPOINT	0	:#	0	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	debug	10	:testing CHECKPOINT	0	:#	1	:/home/huanyang/workplace/checkpoint.on.linux.test	1	zsh	:
+pane	debug	11	:looking for dartClient source	0	:#	0	:/work	1	zsh	:
+pane	debug	12	:Dart tool repo	0	:#	0	:/work/darts/clientsw/decode	1	zsh	:
+pane	debug	13	:new snoop	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	13	:new snoop	0	:#	1	:/work/new.apollo/apollo/scm/tools/hp	1	zsh	:
+pane	debug	14	:linux kernel	0	:#	0	:/work/huanyang/linux_kernel	0	zsh	:
+pane	debug	14	:linux kernel	0	:#	1	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	debug	14	:linux kernel	0	:#	2	:/work/huanyang/linux_kernel/opkgbuild/kernel-tux-smp-4-9	1	zsh	:
+pane	debug	14	:linux kernel	0	:#	3	:/work/huanyang/sirius_dist	0	zsh	:
+pane	debug	15	:zsh	0	:	0	:/work/huanyang/sirius_dotrun_cleanup/sirius/hw/src/lib_hptrace/src (deleted)	1	nvim	:
+pane	experiment	1	:rust	0	:#-	0	:/home/huanyang/workplace/rust/check.integration/checkintegration	0	nvim	:
+pane	experiment	1	:rust	0	:#-	1	:/home/huanyang/workplace/rust/check.integration/checkintegration	1	zsh	:
+pane	experiment	2	:tmux	0	:#	0	:/home/huanyang/.oh-my-zsh/custom/plugins/zconvey	0	zsh	:
+pane	experiment	2	:tmux	0	:#	1	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	experiment	2	:tmux	0	:#	2	:/home/huanyang/workplace/checkpoint.on.linux.test	1	zsh	:
+pane	experiment	3	:universal ctags	1	:*	0	:/home/huanyang/software/ctags	1	zsh	:
+pane	sirius	1	:mono copy issue	0	:#	0	:/work/huanyang/sirius_video_cleanup/pelican	0	zsh	:
+pane	sirius	1	:mono copy issue	0	:#	1	:/work/huanyang/sirius_video_cleanup/sirius/opkgbuild/teton_keytar_sox	1	zsh	:
+pane	sirius	2	:isolate column data	0	:#	0	:/work/huanyang/sirius_move_column_data_1/pelican	0	zsh	:
+pane	sirius	2	:isolate column data	0	:#	1	:/work/huanyang/sirius_move_column_data_1/sirius/opkgbuild/clearwater_keytar_sox	0	zsh	:
+pane	sirius	2	:isolate column data	0	:#	2	:/work/huanyang/apollo.test/apollo-core/scm/phx	1	zsh	:
+pane	sirius	3	:checking traces	0	:#	0	:/home/huanyang/tmp	1	zsh	:
+pane	sirius	4	:trapping table	0	:	0	:/work/huanyang/sirius_trapping_table/pelican	0	zsh	:
+pane	sirius	4	:trapping table	0	:	1	:/work/huanyang/sirius_trapping_table/sirius/opkgbuild/clearwater_keytar_sox	1	zsh	:
+pane	sirius	5	:kurt mode full page	0	:#Z	0	:/projects/sirius/work/huanyang/sirius_kurt_mode/pelican	0	nvim	:
+pane	sirius	5	:kurt mode full page	0	:#Z	1	:/projects/sirius/work/huanyang/sirius_kurt_mode/sirius	1	nvim	:
+pane	sirius	6	:video underrun	0	:-	0	:/work/huanyang/sirius_underrun/pelican	1	zsh	:
+pane	sirius	9	:video page dump script	0	:#	0	:/work/huanyang/sirius_better_page_dump/pelican/drivers/eiVideo/tools/HeaderTools (deleted)	0	nvim	:
+pane	sirius	9	:video page dump script	0	:#	1	:/work/huanyang/sirius_better_page_dump/pelican/drivers/eiVideo/tools/HeaderTools (deleted)	1	zsh	:
+pane	sirius	10	:one queue!!!!	1	:*Z	0	:/work/huanyang/sirius_vanilla/pelican	0	zsh	:
+pane	sirius	10	:one queue!!!!	1	:*Z	1	:/work/huanyang/sirius_vanilla/sirius/opkgbuild/clearwater_keytar_sox	0	zsh	:
+pane	sirius	10	:one queue!!!!	1	:*Z	2	:/work/huanyang/apollo.complete.repo/apollotest-core/phx_commonlib/configuration/ppp	1	zsh	:
+pane	video sharing	1	:video firmware introduction	1	:*	0	:/home/huanyang	1	nvim	:
+pane	video sharing	2	:source	0	:#-	0	:/work/huanyang/sirius_vanilla/pelican	1	nvim	:
+window	apollo	1	1	:*	dad0,320x95,0,0{160x95,0,0,322,159x95,161,0,811}
+window	apollo	2	0	:#-	0ad5,320x95,0,0{160x95,0,0,455,159x95,161,0,456}
+window	apollo	3	0	:#	32a0,320x95,0,0,156
+window	debug	1	1	:*Z	2ad7,320x95,0,0{160x95,0,0,293,159x95,161,0,299}
+window	debug	2	0	:#Z	dd0e,319x94,0,0{159x94,0,0,5,159x94,160,0,6}
+window	debug	3	0	:#	3ca5,319x94,0,0{159x94,0,0[159x46,0,0,7,159x47,0,47,8],159x94,160,0,9}
+window	debug	4	0	:#	32fb,320x95,0,0{160x95,0,0,10,159x95,161,0,72}
+window	debug	5	0	:#-	aad6,320x95,0,0{160x95,0,0,297,159x95,161,0,619}
+window	debug	6	0	:#	c17a,320x95,0,0{122x95,0,0[122x27,0,0,11,122x26,0,28,12,122x40,0,55,13],197x95,123,0,14}
+window	debug	7	0	:#	3086,320x95,0,0{159x95,0,0[159x46,0,0,15,159x48,0,47,16],160x95,160,0,17}
+window	debug	8	0	:#	c7ac,320x95,0,0{160x95,0,0[160x57,0,0,18,160x37,0,58,19],159x95,161,0[159x39,161,0,20,159x55,161,40,21]}
+window	debug	9	0	:#	5078,320x95,0,0{160x95,0,0,22,159x95,161,0[159x47,161,0,23,159x47,161,48,24]}
+window	debug	10	0	:#	b2fe,320x95,0,0{160x95,0,0,25,159x95,161,0,26}
+window	debug	11	0	:#	e4d6,320x95,0,0,27
+window	debug	12	0	:#	e4f7,319x94,0,0,28
+window	debug	13	0	:#	f2fd,320x95,0,0{160x95,0,0,29,159x95,161,0,30}
+window	debug	14	0	:#	0819,320x95,0,0{160x95,0,0[160x47,0,0,305,160x47,0,48,594],159x95,161,0[159x47,161,0,592,159x47,161,48,593]}
+window	debug	15	0	:	32b3,319x94,0,0,368
+window	experiment	1	0	:#-	11e2,320x95,0,0{173x95,0,0,221,146x95,174,0,229}
+window	experiment	2	0	:#	f208,319x94,0,0{159x94,0,0,32,159x94,160,0[159x46,160,0,33,159x47,160,47,34]}
+window	experiment	3	1	:*	7299,320x95,0,0,230
+window	sirius	1	0	:#	0ad2,320x95,0,0{160x95,0,0,663,159x95,161,0,821}
+window	sirius	2	0	:#	610c,320x95,0,0{160x95,0,0,172,159x95,161,0[159x48,161,0,396,159x46,161,49,614]}
+window	sirius	3	0	:#	32a3,320x95,0,0,748
+window	sirius	4	0	:	9ad5,320x95,0,0{160x95,0,0,926,159x95,161,0,927}
+window	sirius	5	0	:#Z	b2fc,320x95,0,0{122x95,0,0,42,197x95,123,0,43}
+window	sirius	6	0	:-	329f,320x95,0,0,934
+window	sirius	9	0	:#	793b,319x94,0,0{159x94,0,0,767,159x94,160,0,768}
+window	sirius	10	1	:*Z	7d0f,320x95,0,0{160x95,0,0,540,159x95,161,0[159x47,161,0,564,159x47,161,48,932]}
+window	video sharing	1	1	:*	72b3,319x94,0,0,696
+window	video sharing	2	0	:#-	72b4,319x94,0,0,697
+state	sirius	

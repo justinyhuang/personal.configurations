@@ -1,0 +1,80 @@
+pane	apollo	1	:phx	0	:-Z	0	:/home/huanyang/logs	1	zsh	:
+pane	apollo	1	:phx	0	:-Z	1	:/work/huanyang/phx/scm/phx	0	nvim	:
+pane	apollo	2	:apollo	1	:*	0	:/work/huanyang/apollo/apollo-core/scm/phx	0	zsh	:
+pane	apollo	2	:apollo	1	:*	1	:/work/huanyang/apollo/apollo-core/scm/phx/components/pelican	1	zsh	:
+pane	debug	2	:admin_tools	0	:#-	0	:/work/huanyang/admin_tools	1	zsh	:
+pane	debug	2	:admin_tools	0	:#-	1	:/work/huanyang/sirius_mono_aht_table_issue/sirius/opkgbuild/teton_keytar_sox	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	0	:/work/huanyang/sirius_video_modularization/sirius	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	1	:/work/huanyang/sirius_video_modularization/sirius/hw/src/board_cufflink/src	0	zsh	:
+pane	debug	3	:hptrace driver using device tree	0	:#	2	:/work/huanyang/linux_kernel/m_linux/drivers	1	zsh	:
+pane	debug	4	:decode.py	1	:*	0	:/home/huanyang/workplace/new.decode.py	1	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	0	:/home/huanyang/workplace/mmap.shared.memory	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	1	:/home/huanyang/workplace/mmap.shared.memory	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	2	:/home/huanyang	0	zsh	:
+pane	debug	6	:new buildcatalog and insertdebug	0	:#	3	:/home/huanyang	1	zsh	:
+pane	debug	7	:percent s scanner	0	:#	0	:/home/huanyang/workplace/percent.s.scanner	0	zsh	:
+pane	debug	7	:percent s scanner	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	7	:percent s scanner	0	:#	2	:/work	1	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	2	:/home/huanyang	0	zsh	:
+pane	debug	8	:map serial to checkpoint	0	:#	3	:/home/huanyang	1	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	1	:/home/huanyang	0	zsh	:
+pane	debug	9	:simulator checkpoint to debug_	0	:#	2	:/home/huanyang	1	zsh	:
+pane	debug	10	:testing CHECKPOINT	0	:#	0	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	debug	10	:testing CHECKPOINT	0	:#	1	:/home/huanyang/workplace/checkpoint.on.linux.test	1	more	:
+pane	debug	11	:looking for dartClient source	0	:#	0	:/work	1	zsh	:
+pane	debug	12	:Dart tool repo	0	:#	0	:/work/darts	1	nvim	:
+pane	debug	13	:new snoop	0	:#	0	:/home/huanyang	0	zsh	:
+pane	debug	13	:new snoop	0	:#	1	:/work/new.apollo/apollo/scm/tools/hp	1	zsh	:
+pane	experiment	1	:rust	1	:*	0	:/home/huanyang/workplace/rust	1	zsh	:
+pane	experiment	2	:tmux	0	:#-	0	:/home/huanyang/.oh-my-zsh/custom/plugins/zconvey	1	zsh	:
+pane	experiment	2	:tmux	0	:#-	1	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	experiment	2	:tmux	0	:#-	2	:/home/huanyang/workplace/checkpoint.on.linux.test	0	zsh	:
+pane	sirius	1	:VdoPage	1	:*	0	:/work/huanyang/sirius_video_page/sirius	0	zsh	:
+pane	sirius	1	:VdoPage	1	:*	1	:/work/huanyang/sirius_video_page/pelican/drivers/eiVideo	1	zsh	:
+pane	sirius	2	:modularization - traptone	0	:#	0	:/work/huanyang/sirius_video_modularization/pelican	0	zsh	:
+pane	sirius	2	:modularization - traptone	0	:#	1	:/work/huanyang/sirius_video_modularization/sirius/opkgbuild/clearwater_keytar_sox	1	zsh	:
+pane	sirius	3	:checking traces	0	:#	0	:/home/huanyang/tmp	1	zsh	:
+pane	sirius	4	:mono aht table issue	0	:#Z	0	:/work/huanyang/sirius_mono_aht_table_issue/pelican	0	zsh	:
+pane	sirius	4	:mono aht table issue	0	:#Z	1	:/work/huanyang/sirius_mono_aht_table_issue/sirius/opkgbuild/teton_keytar_sox	1	zsh	:
+pane	sirius	5	:kurt mode full page	0	:#	0	:/projects/sirius/work/huanyang/sirius_kurt_mode/pelican	0	zsh	:
+pane	sirius	5	:kurt mode full page	0	:#	1	:/projects/sirius/work/huanyang/sirius_kurt_mode/sirius	1	zsh	:
+pane	sirius	6	:smaller tdmp buffer for mono Rivers	0	:#	0	:/projects/sirius/work/huanyang/sirius_kurt_mode/pelican	1	zsh	:
+pane	sirius	7	:opal module	0	:#	0	:/work/huanyang/sirius_opal_module/pelican	1	nvim	:
+pane	sirius	7	:opal module	0	:#	1	:/work/huanyang/sirius_opal_module/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	8	:common video arch	0	:#	0	:/work/huanyang/sirius_common_video_arch/pelican	0	nvim	:
+pane	sirius	8	:common video arch	0	:#	1	:/work/huanyang/sirius_common_video_arch/sirius/opkgbuild/clearwater_keytar_sox	1	zsh	:
+pane	sirius	9	:underrun in duration	0	:#Z	0	:/work/huanyang/sirius_underrun_in_duration/sirius/opkgbuild/teton_keytar_sox	1	zsh	:
+pane	sirius	9	:underrun in duration	0	:#Z	1	:/work/huanyang/sirius_underrun_in_duration/pelican	0	nvim	:
+pane	sirius	10	:opal module	0	:-	0	:/work/huanyang/sirius_opal_module/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	10	:opal module	0	:-	1	:/work/huanyang/sirius_opal_module/pelican	1	zsh	:
+pane	sirius	11	:add a bm function	0	:#	0	:/work/huanyang/sirius_bm_function/pelican	1	nvim	:
+window	apollo	1	0	:-Z	97e0,320x95,0,0{160x95,0,0,1,159x95,161,0,784}
+window	apollo	2	1	:*	5d6a,320x95,0,0{160x95,0,0,2,159x95,161,0,3}
+window	debug	2	0	:#-	5ad4,320x95,0,0{160x95,0,0,730,159x95,161,0,747}
+window	debug	3	0	:#	5393,320x95,0,0{160x95,0,0[160x47,0,0,7,160x47,0,48,8],159x95,161,0,9}
+window	debug	4	1	:*	ef43,192x53,0,0,649
+window	debug	6	0	:#	8f7b,200x59,0,0{62x59,0,0[62x15,0,0,14,62x14,0,16,15,62x28,0,31,16],137x59,63,0,17}
+window	debug	7	0	:#	3085,320x95,0,0{159x95,0,0[159x46,0,0,18,159x48,0,47,19],160x95,160,0,20}
+window	debug	8	0	:#	27a4,320x95,0,0{160x95,0,0[160x57,0,0,21,160x37,0,58,22],159x95,161,0[159x39,161,0,23,159x55,161,40,24]}
+window	debug	9	0	:#	707c,320x95,0,0{160x95,0,0,25,159x95,161,0[159x47,161,0,26,159x47,161,48,27]}
+window	debug	10	0	:#	5ce2,200x59,0,0{100x59,0,0,28,99x59,101,0,29}
+window	debug	11	0	:#	64d0,320x95,0,0,30
+window	debug	12	0	:#	64d1,320x95,0,0,31
+window	debug	13	0	:#	32fc,320x95,0,0{160x95,0,0,32,159x95,161,0,33}
+window	experiment	1	1	:*	329f,320x95,0,0,763
+window	experiment	2	0	:#-	0016,320x95,0,0{160x95,0,0,39,159x95,161,0[159x47,161,0,266,159x47,161,48,267]}
+window	sirius	1	1	:*	3fa1,240x71,0,0{121x71,0,0,286,118x71,122,0,774}
+window	sirius	2	0	:#	b2fc,320x95,0,0{160x95,0,0,42,159x95,161,0,43}
+window	sirius	3	0	:#	72a1,320x95,0,0,295
+window	sirius	4	0	:#Z	4ad6,320x95,0,0{160x95,0,0,643,159x95,161,0,659}
+window	sirius	5	0	:#	b2fe,320x95,0,0{122x95,0,0,44,197x95,123,0,45}
+window	sirius	6	0	:#	329e,320x95,0,0,382
+window	sirius	7	0	:#	9ad2,320x95,0,0{160x95,0,0,154,159x95,161,0,281}
+window	sirius	8	0	:#	f2fe,320x95,0,0{160x95,0,0,49,159x95,161,0,50}
+window	sirius	9	0	:#Z	6ad5,320x95,0,0{160x95,0,0,465,159x95,161,0,466}
+window	sirius	10	0	:-	cad5,320x95,0,0{160x95,0,0,874,159x95,161,0,875}
+window	sirius	11	0	:#	f2a3,320x95,0,0,877
+state	sirius	

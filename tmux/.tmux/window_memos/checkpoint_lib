@@ -1,0 +1,26 @@
+we need to do the following:
+    v change the header file name from 'debug.h' to 'common_debug.h'
+    v implement the _init function for the CHECKPOINT library 
+    x change the insert_debug tool to produce the ID with new layout
+    - implement a mechanism in the decoder tool to first separate CHECKPOINT data from different clusters: different
+    cores might be running images of different endianness
+    - implement the endianness handling to the decode tool
+    - implement the package id to the insert_debug tool
+    - implement corresponding changes in the decoder tool
+    - test it and measure the performance
+
+    ---pre review---
+    - consider change checkpoint.h to hptrace.h ??
+    - consider eliminating checkpointNames.list.h
+    - consider eliminating checkpointSrcs.h
+    - consider removing upid.h
+
+    ------not sure list----
+    - implement the secure function in the library
+    - implement the mechanism to feed the UPID to the build system
+    v implement the mechanism to send special CHECKPOINTs
+    v implement the mechanism to produce shorter RPID for super packages
+    v implement the CHECKPOINT function with the RID (Registration ID)
+    v implement the interface to define and reference the RID for a package/process
+    v implement the registration function in the library
+    - there is still some defect in the rpid, in the test case it is 0x40, which is not currect

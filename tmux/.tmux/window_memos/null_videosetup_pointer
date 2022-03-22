@@ -1,0 +1,6 @@
+this null pointer issue triggers the assert at line 1881 of videopwm_tux module.
+it is associated with the cr, 382622, that can be reproduced (not all the time) by printing A5 jobs.
+it is also associated with another CR, 381369, that has something to do with USB print and then cancel
+
+this is actually a punt, when video sees a TOP when we are still printing the current page.
+i think with this punt we should be aborting but somehow it keeps on printing

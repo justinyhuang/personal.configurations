@@ -1,0 +1,13 @@
+
+    v implement a mechanism in the decoder tool to first separate CHECKPOINT data from different clusters: different cores might be running images of different endianness
+        x reasons to move the endianness handling to the insert_debug tool:
+            - once the debuglist is generated, all decoding effort will not need to spend time to handle endianness
+        v reasons that we need to move the endianness handling to the decoder tool:
+            - even though the debuglist file can be generated so that the ID's are endianness awared, the data in the
+            CHECKPOINT is not. so we will need to manipulate the data, and the IDs, in the decoder
+    v implement the endianness handling to the decode tool
+    - implement the package id to the insert_debug tool
+      - implementing shared memory and synchronization in the insert_debug tool, i am now stuck at synchronization
+      among multi cores. boost mutex doesn't seem to work in SMP
+      - need also to implement the package ID
+    - implement corresponding changes in the decoder tool

@@ -1,0 +1,38 @@
+# Prints the quote of the specified company stock
+
+# The update period in seconds.
+update_period=600
+# The company stock name
+company_name='hpq'
+# The tmp file location
+tmp_file=${TMUX_POWERLINE_DIR_TEMPORARY}"/stock.txt"
+
+run_segment() {
+    stock=$(__google_stock)
+    if [ -n $stock ]; then
+        echo "$company_name[$stock]" | tr '[:lower:]' '[:upper:]' | tr -d [:space:]
+    fi
+    return 0
+}
+
+__google_stock() {
+    if [ -f $tmp_file]; then
+        if shell_is_osx || shell_is_bsd; then
+            last_update=$(stat -f "%m" ${tmp_file})
+        elif shell_is_linux; then
+            last_update=$(stat -c "%Z" ${tmp_file})
+        fi
+        time_now=$(date +%s)
+        up_to_date=$(echo "(${time_now}-${last_update}) < ${update_period}" | bc)
+        if [ "$up_to_date" -eq 1 ]; then
+                __update
+        fi
+    else
+        __update
+    fi
+}
+
+__update()
+{
+    echo $(curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=${company_name}&f=l1" | tee "${tmp_file}")
+}

@@ -1,0 +1,55 @@
+pane	apollo	1	:trunk: clean up common_video	1	:*	0	:/work/huanyang/apollo.trunk/apollo-core/scm/phx/components/common_video	1	zsh	:
+pane	apollo	1	:trunk: clean up common_video	1	:*	1	:/work/huanyang/apollo.trunk/apollo-core/scm/phx	0	zsh	:
+pane	apollo	2	:trunk: 5ns pearl	0	:#-	0	:/work/huanyang/apollo.trunk2/apollo-core/scm/phx/components/common_video	0	nvim	:
+pane	apollo	2	:trunk: 5ns pearl	0	:#-	1	:/work/huanyang/apollo.trunk2/apollo-core/scm/phx	1	zsh	:
+pane	debug	1	:ESnooper	0	:#	0	:/work/huanyang/apollo.esnoop/apollo-core/scm/phx/components	1	zsh	:
+pane	debug	2	:try including files that are defined by a macro	0	:-	0	:/work2/dynamic.include	0	zsh	:
+pane	debug	2	:try including files that are defined by a macro	0	:-	1	:/work2/dynamic.include	1	zsh	:
+pane	debug	3	:plang	0	:#	0	:/work/huanyang/plang/plang/opkgbuild/print_languages_full	0	zsh	:
+pane	debug	3	:plang	0	:#	1	:/work/huanyang/linux_service	1	nvim	:
+pane	debug	4	:percent-n	1	:*	0	:/work2/percent_n	0	nvim	:
+pane	debug	4	:percent-n	1	:*	1	:/work2/percent_n	1	zsh	:
+pane	experiment	1	:rust netbot	0	:#-	0	:/home/huanyang/workplace/rust.netbot/netbot	0	zsh	:
+pane	experiment	1	:rust netbot	0	:#-	1	:/home/huanyang/workplace/rust.netbot/netbot	1	zsh	:
+pane	experiment	2	:test	1	:*	0	:/home/huanyang	0	zsh	:
+pane	experiment	2	:test	1	:*	1	:/home/huanyang	1	zsh	:
+pane	sirius	1	:trunk: cancel in video	0	:#	0	:/work/huanyang/sirius_trunk/pelican	1	zsh	:
+pane	sirius	1	:trunk: cancel in video	0	:#	1	:/work/huanyang/sirius_trunk/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	2	:rivers: special build for ceivideoimpl asserts	0	:#	0	:/work/huanyang/sirius_rivers_frz/pelican	0	zsh	:
+pane	sirius	2	:rivers: special build for ceivideoimpl asserts	0	:#	1	:/work/huanyang/sirius_rivers_frz/sirius/opkgbuild/teton_sox	1	zsh	:
+pane	sirius	3	:for trace	0	:#	0	:/work2/tmp	1	zsh	:
+pane	sirius	4	:trunk2: ceivideo optimization 5	0	:-	0	:/work/huanyang/sirius_trunk_2/sirius	1	zsh	:
+pane	sirius	4	:trunk2: ceivideo optimization 5	0	:-	1	:/work/huanyang/sirius_trunk_2/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	5	:trunk3: fix recently introduced issue, revising globalISR	0	:#	0	:/work/huanyang/sirius_trunk_3/pelican	1	zsh	:
+pane	sirius	5	:trunk3: fix recently introduced issue, revising globalISR	0	:#	1	:/work/huanyang/sirius_trunk_3/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	5	:trunk3: fix recently introduced issue, revising globalISR	0	:#	2	:/work/huanyang/apollo.testing.pelican.changes/apollo-core/scm/phx	0	zsh	:
+pane	sirius	6	:rivers: new	0	:#	0	:/home/huanyang	0	zsh	:
+pane	sirius	6	:rivers: new	0	:#	1	:/home/huanyang	1	zsh	:
+pane	sirius	7	:trunk4: tdmp capability investigation	0	:#	0	:/work/huanyang/sirius_trunk_4/pelican/drivers/eiVideo/src	1	zsh	:
+pane	sirius	7	:trunk4: tdmp capability investigation	0	:#	1	:/work/huanyang/sirius_trunk_4/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	8	:trunk7: DoX	1	:*	0	:/work/huanyang/sirius_trunk_7/pelican	0	zsh	:
+pane	sirius	8	:trunk7: DoX	1	:*	1	:/work/huanyang/sirius_trunk_7/sirius/opkgbuild/dune_selene_dox	1	nvim	:
+pane	sirius	9	:trunk5: build sirius with common video	0	:#	0	:/work/huanyang/sirius_trunk_5/sirius/opkgbuild/clearwater_sox	0	zsh	:
+pane	sirius	9	:trunk5: build sirius with common video	0	:#	1	:/work/huanyang/sirius_trunk_5/sirius/printengine/src/pe_laser/src	1	zsh	:
+pane	sirius	10	:trunk6: video crc measurement	0	:#	0	:/work/huanyang/sirius_trunk_6/pelican	1	zsh	:
+pane	sirius	11	:trunk: post common video	0	:	0	:/work/huanyang/sirius_trunk_8/common_video	1	zsh	:
+window	apollo	1	1	:*	ef0e,320x95,0,0{160x95,0,0,1,159x95,161,0,66}
+window	apollo	2	0	:#-	3302,320x95,0,0{160x95,0,0,76,159x95,161,0,77}
+window	debug	1	0	:#	c97f,319x94,0,0,2
+window	debug	2	0	:-	2024,319x94,0,0{158x94,0,0,3,160x94,159,0,4}
+window	debug	3	0	:#	6ee0,319x94,0,0{159x94,0,0,5,159x94,160,0,84}
+window	debug	4	1	:*	b0d2,319x94,0,0{159x94,0,0,86,159x94,160,0,87}
+window	experiment	1	0	:#-	5928,320x95,0,0{159x95,0,0,6,160x95,160,0,7}
+window	experiment	2	1	:*	592b,320x95,0,0{159x95,0,0,8,160x95,160,0,9}
+window	sirius	1	0	:#	4565,320x95,0,0{155x95,0,0,10,164x95,156,0,11}
+window	sirius	2	0	:#	4567,320x95,0,0{155x95,0,0,12,164x95,156,0,13}
+window	sirius	3	0	:#	64d3,320x95,0,0,14
+window	sirius	4	0	:-	456a,320x95,0,0{155x95,0,0,15,164x95,156,0,16}
+window	sirius	5	0	:#	8dab,320x95,0,0{155x95,0,0,18,164x95,156,0[164x43,156,0,19,164x51,156,44,20]}
+window	sirius	6	0	:#	c566,320x95,0,0{155x95,0,0,21,164x95,156,0,22}
+window	sirius	7	0	:#	c568,320x95,0,0{155x95,0,0,23,164x95,156,0,24}
+window	sirius	8	1	:*	c56a,320x95,0,0{155x95,0,0,25,164x95,156,0,26}
+window	sirius	9	0	:#	d1b0,320x95,0,0{158x95,0,0,40,161x95,159,0,45}
+window	sirius	10	0	:#	e4d2,320x95,0,0,42
+window	sirius	11	0	:	64d3,320x95,0,0,71
+state	debug	sirius

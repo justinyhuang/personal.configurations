@@ -1,0 +1,8 @@
+WINDOW_NAME=`tmux display-message -p "#W"`
+FILE_NAME=${WINDOW_NAME// /_}
+figlet -r "Task Reminder"
+cat /home/huanyang/.tmux/window_memos/$FILE_NAME
+#tmux split-window "cat /home/huanyang/.tmux/window_memos/$FILE_NAME; read"
+#tmux new-window "/home/huanyang/.tmux/test.py"
+#tmux resize-pane -Z
+

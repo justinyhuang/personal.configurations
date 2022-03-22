@@ -1,0 +1,2 @@
+need to change insert.l so that we can detect commands like DEBUG_msg DEBUG_print to CHECKPOINTA
+

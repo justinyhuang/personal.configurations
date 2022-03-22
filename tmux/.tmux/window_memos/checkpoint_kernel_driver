@@ -1,0 +1,2 @@
+the driver is now working with 4.9 and passed the test of memap and write to hptrace.
+i have also committed the change
