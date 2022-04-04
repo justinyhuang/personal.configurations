@@ -8,7 +8,7 @@ EORC
 
 run_segment() {
 	local stock
-        stock="$(~/bin/ticker.sh FB QQQ SPY ARK)"
+        stock="$(~/bin/ticker.sh FB QQQ SPY ARKK)"
         echo "${stock}"
         #echo "stock"
         return 0

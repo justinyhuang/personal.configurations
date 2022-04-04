@@ -82,6 +82,7 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " solarized
 Plug 'overcache/NeoSolarized'
+
 call plug#end()
 
 "---General Settings---
@@ -361,7 +362,7 @@ command! MyFZFLines call fzf#run({
 ""# is to show the line number
 "map ,f ;g//PP#<Left><Left><Left><Left>
 "map ,f ;FilterShowAndJump<CR>
-map ,f ;MyFZFLines<CR>
+map ,l ;MyFZFLines<CR>
 
 "function MyStreamModify(filter)
 "    execute '!sed
@@ -588,8 +589,8 @@ endif
 "for vim-highlightedyank
 let g:highlightedyank_highlight_duration = 500
 
-"for grepping the current word under the cursor
-nnoremap <silent> ,g :Rg <C-r><C-w><CR>
+"for grepping the current word under the cursor - DISABLED for using BigGrep
+"nnoremap <silent> ,g :Rg <C-r><C-w><CR>
 
 "to show the current context (normally function name)
 nnoremap <C-g> :echo getline(search('\v^[[:alpha:]$_]', "bn", 1, 100))<CR>
@@ -911,3 +912,15 @@ lua <<EOF
 })
 EOF
 
+" using fbgs
+command! -bang -nargs=* Bg
+      \ call fzf#vim#grep(
+      \   '/usr/local/bin/fbgs '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
+nnoremap <C-p>a :Bg
+
+"for grepping the current word under the cursor
+nnoremap <silent> ,g :Bg <C-r><C-w><CR>
