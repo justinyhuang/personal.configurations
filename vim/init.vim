@@ -83,6 +83,9 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " solarized
 Plug 'overcache/NeoSolarized'
 
+" for easily install LSP's
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 call plug#end()
 
 "---General Settings---

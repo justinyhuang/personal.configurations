@@ -1,0 +1,74 @@
+#!/bin/bash
+# ftwind - switch window (based on @george-b)
+# modified by justinyhuang, adding -a to list-windows to show all the windows on the server
+GREEN='\033[00;32m'
+RESTORE='\033[0m'
+
+# Get information about windows from tmux
+windows_str=$(tmux list-windows -a -F '#{session_id} #{session_name} #I #{window_active} #{window_name}')
+
+# Process windows_str
+windows=''
+delim=''
+actives=()
+while read -r line; do
+   line_array=($line)
+
+   session_id=${line_array[0]}
+   session_name=${line_array[1]}
+   num=${line_array[2]}
+   active=${line_array[3]}
+   name=${line_array[@]:4:${#line_array[@]}}
+
+   # Create output line
+   out=$(echo -e "$name")
+
+   # Change color and add * if active
+   if [ "$active" -eq "1" ]
+   then
+      actives+=("*")
+      names+=("$GREEN$session_id $num $session_name$RESTORE")
+      #names+=("$GREEN$session_name")
+      # Add to windows string
+      windows=$(printf '%s%s%s' "$windows" "$delim" "$GREEN$out$RESTORE")
+   else
+      actives+=(" ")
+      names+=("$session_id $num $session_name")
+      #names+=("$session_name")
+      # Add to windows string
+      windows=$(printf '%s%s%s' "$windows" "$delim" "$out")
+   fi
+
+   # So that join works
+   delim=$'\n'
+done <<< "$windows_str"
+
+# Align on columns
+windows=$(column -s $'\t' -t <<< "$windows")
+
+# Split by newlines
+IFS=$'\n' read -rd '' -a window_arr <<<"$windows"
+
+# Add * and number at beginning, as these aren't handled correctly by column
+# command
+windows=''
+delim=''
+for (( i=0; i<${#window_arr[*]}; ++i))
+do
+   out=$(echo -e "${actives[$i]} ${names[$i]} ${window_arr[$i]}")
+   windows=$(printf '%s%s%s%s' "$windows" "$delim" "$out")
+   delim=$'\n'
+done
+
+# Run fzf and check result
+target=$(echo "$windows" | /home/huanyang/.fzf/bin/fzf-tmux +m --reverse --ansi)
+# Extract window number, handling * correctly
+#echo "[$target]"
+target_session=$(echo "$target"| sed -e 's/^\**[[:space:]]*//' | cut -d' ' -f1)
+target_window=$(echo "$target" | sed -e 's/^\**[[:space:]]*//' | cut -d' ' -f2)
+
+# Select window
+tmux \
+    switch-client -t $target_session \; \
+    select-window -t $target_window
+
