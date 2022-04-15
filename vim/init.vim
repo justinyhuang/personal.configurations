@@ -83,9 +83,6 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " solarized
 Plug 'overcache/NeoSolarized'
 
-" for easily install LSP's
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
 call plug#end()
 
 "---General Settings---
@@ -365,7 +362,7 @@ command! MyFZFLines call fzf#run({
 ""# is to show the line number
 "map ,f ;g//PP#<Left><Left><Left><Left>
 "map ,f ;FilterShowAndJump<CR>
-map ,l ;MyFZFLines<CR>
+map ,f ;MyFZFLines<CR>
 
 "function MyStreamModify(filter)
 "    execute '!sed
@@ -496,7 +493,40 @@ set rtp+=~/.vim/plugin
 set rtp+=~/.vim/plugin/phx_tools
 
 "-- use the FZF for a much better performance
-map ,, ;FZF<CR>
+"map ,, ;FZF<CR>
+
+"try using myles with fzf with meta code
+let g:fbfolders = [
+      \ "/data/users/".$USER."/fbsource",
+      \ "/data/users/".$USER."/fbsource/fbcode",
+      \ "/data/users/".$USER."/configerator"
+      \ ]
+
+let g:repo_path = system('hg root')
+let g:repo_prefix = 'f'
+if g:repo_path =~# 'configerator'
+      let g:repo_prefix = 'c'
+elseif repo_path =~# 'fbcode'
+      let g:repo_prefix = 'f'
+endif
+
+if (index(g:fbfolders, getcwd()) >= 0)
+      command! -bang -nargs=? -complete=dir Files call fzf#run({
+          \ 'source': "find . -maxdepth 1 -type f",
+          \ 'sink': 'e',
+          \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
+          \'down': '30%'
+          \'window': 'call FloatingFZF("small")'
+          \ })
+endif
+nn <leader>/ :Files <CR>
+
+nnoremap <silent> ,, :call fzf#run({
+          \ 'source': "find . -maxdepth 1 -type f",
+          \ 'sink': 'e',
+          \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
+          \'window': 'call FloatingFZF("small")'
+            \ })<CR>
 
 " Jump to tab: ,t
 function TabName(n)
@@ -535,6 +565,18 @@ endfunction
 nnoremap <silent> ,b :call fzf#run({
 \   'source':  reverse(<sid>buflist()),
 \   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2,
+\   'window': 'call FloatingFZF("small")'
+\ })<CR>
+
+function! s:bufdelete(e)
+    execute 'bd' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> ,d :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufdelete'),
 \   'options': '+m',
 \   'down':    len(<sid>buflist()) + 2,
 \   'window': 'call FloatingFZF("small")'
@@ -887,18 +929,19 @@ lua <<EOF
     })
   })
 
-  -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['clangd'].setup {
-    capabilities = capabilities
-  }
+  -- disable lsp for now: it doesn't work properly because it doesn't know about other dependencies
+  --    -- Setup lspconfig.
+  --    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  --    -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  --    require('lspconfig')['clangd'].setup {
+  --      capabilities = capabilities
+  --    }
 EOF
 
 " using fbgs
 command! -bang -nargs=* Bg
       \ call fzf#vim#grep(
-      \   '/usr/local/bin/fbgs '.shellescape(<q-args>), 1,
+      \   'fbgs.wrapper.py '.shellescape(<q-args>), 1,
       \   <bang>0 ? fzf#vim#with_preview('up:60%')
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
@@ -907,3 +950,5 @@ nnoremap <C-p>a :Bg
 
 "for grepping the current word under the cursor
 nnoremap <silent> ,g :Bg <C-r><C-w><CR>
+
+
