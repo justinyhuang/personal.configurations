@@ -1,3 +1,3 @@
 WINDOW_NAME=`tmux display-message -p "#W"`
 FILE_NAME=${WINDOW_NAME// /_}
-tmux split-window -p 95 "vim /home/huanyang/.tmux/window_memos/$FILE_NAME -c \"set background=dark\""
+tmux split-window -p 95 "vim /home/justinyhuang/.tmux/window_memos/$FILE_NAME -c \"set background=dark\""

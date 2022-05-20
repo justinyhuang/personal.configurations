@@ -77,7 +77,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,3 +120,6 @@ alias lg=lazygit
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8787af"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $HOME/.cargo/env
+

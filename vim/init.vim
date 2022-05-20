@@ -15,6 +15,12 @@ Plug 'junegunn/fzf.vim'
 "Plug 'wellle/tmux-complete.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 "Plug 'urbainvaes/vim-tmux-pilot'
 
@@ -463,8 +469,8 @@ let g:airline_symbols.readonly  = '⭤'
 let g:airline_symbols.maxlinenr = '⭡'
 let g:airline_symbols.notexists = 'X'
 let g:airline_powerline_fonts = 1
-
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme = 'luna'
 
 let g:MultipleSearchMaxColors = 16
 
