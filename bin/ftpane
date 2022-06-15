@@ -3,7 +3,7 @@
 panes=$(tmux list-panes -s -F '#I:#P - #{pane_current_path} #{pane_current_command}')
 current_window=$(tmux display-message -p '#I')
 
-target=$(echo "$panes" | fzf-tmux +m --reverse)
+target=$(echo "$panes" | fzf-tmux -p +m --reverse)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res

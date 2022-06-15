@@ -61,7 +61,7 @@ do
 done
 
 # Run fzf and check result
-target=$(echo "$windows" | /home/huanyang/.fzf/bin/fzf-tmux +m --reverse --ansi)
+target=$(echo "$windows" | /home/huanyang/.fzf/bin/fzf-tmux -p +m --reverse --ansi)
 # Extract window number, handling * correctly
 #echo "[$target]"
 target_session=$(echo "$target"| sed -e 's/^\**[[:space:]]*//' | cut -d' ' -f1)
