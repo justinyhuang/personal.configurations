@@ -10,19 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'junegunn/fzf.vim'
 
-"Plug 'Shougo/neoinclude.vim'
-
-"Plug 'wellle/tmux-complete.vim'
-
 Plug 'christoomey/vim-tmux-navigator'
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-
-"Plug 'urbainvaes/vim-tmux-pilot'
 
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
@@ -36,19 +24,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/neopairs.vim'
 
-"Plug 'sirver/UltiSnips'
-
-"Plug 'honza/vim-snippets'
-
 Plug 'easymotion/vim-easymotion'
 
 Plug 'kshenoy/vim-signature'
 
 Plug 'machakann/vim-highlightedyank'
-
-"Plug 'roxma/vim-tmux-clipboard'
-
-Plug 'junegunn/goyo.vim'
 
 Plug 'rust-lang/rust.vim'
 
@@ -59,6 +39,9 @@ Plug 'majutsushi/tagbar' "to show the current function name in the status line
 Plug 'Shougo/neoyank.vim'
 Plug 'justinhoward/fzf-neoyank'
 
+" for showing the current context (function/if/for block)
+Plug 'wellle/context.vim'
+
 "for fzf-neoyank and neoyank
 map ,p ;FZFNeoyank<CR>
 
@@ -66,12 +49,6 @@ Plug 'wellle/visual-split.vim'
 "for visual-split
 xmap sph <Plug>(Visual-Split-VSSplitAbove)
 xmap spl <Plug>(Visual-Split-VSSplitBelow)
-
-"Plug 'TaDaa/vimade'
-
-" disable these since it appears to hang nvim quite a bit
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
 
 Plug 'wellle/targets.vim'
 
@@ -86,8 +63,20 @@ Plug 'hrsh7th/nvim-cmp'
 "tab-nine via nvim-cmp
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
-" solarized
-Plug 'overcache/NeoSolarized'
+" to dynamically illustrate an indent block
+Plug 'echasnovski/mini.indentscope'
+
+" for solarized scheme
+Plug 'maxmx03/solarized.nvim'
+
+" for using noice
+Plug 'MunifTanjim/nui.nvim'
+Plug 'rcarriga/nvim-notify'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'folke/noice.nvim'
+
+" to show dynamic indent hint
+Plug 'echasnovski/mini.indentscope'
 
 call plug#end()
 
@@ -117,8 +106,8 @@ set termguicolors
 :set showtabline=2
 :set tabpagemax=14
 
-"to have mouse fooling around...
-":set mouse=a
+"to stop mouse fooling around...
+set mouse=
 
 " Fix Backspace problem in Vim
 set backspace=2
@@ -301,10 +290,14 @@ map <C-RIGHT> ;tabn<CR>
 map <C-LEFT> ;tabp<CR>
 
 "jump to different tabs
+" map <DOWN> <C-w><down>
+" map <UP> <C-w><up>
+" map <LEFT> <C-w><left>
+" map <RIGHT> <C-w><right>
 map <DOWN> ;tablast<CR>
 map <UP> ;tabfirst<CR>
-map <LEFT> ;tabp<CR>
-map <RIGHT> ;tabn<CR>
+map <LEFT> ;tabnext<CR>
+map <RIGHT> ;tabprev<CR>
 
 " Move cursor together with the screen
 noremap <c-u> j<c-e>
@@ -410,8 +403,8 @@ map fxml ;silent 1,$!xmllint --format --recover - 2>/dev/null
 
 "for indent guide
 "let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " for the plugin Marvim
 let marvim_find_key = '<Space>'
@@ -469,8 +462,8 @@ let g:airline_symbols.readonly  = '⭤'
 let g:airline_symbols.maxlinenr = '⭡'
 let g:airline_symbols.notexists = 'X'
 let g:airline_powerline_fonts = 1
+
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme = 'luna'
 
 let g:MultipleSearchMaxColors = 16
 
@@ -499,40 +492,41 @@ set rtp+=~/.vim/plugin
 set rtp+=~/.vim/plugin/phx_tools
 
 "-- use the FZF for a much better performance
-"map ,, ;FZF<CR>
+"map ,a ;FZF<CR>
+map ,, ;FZF<CR>
 
 "try using myles with fzf with meta code
-let g:fbfolders = [
-      \ "/data/users/".$USER."/fbsource",
-      \ "/data/users/".$USER."/fbsource/fbcode",
-      \ "/data/users/".$USER."/configerator"
-      \ ]
-
-let g:repo_path = system('hg root')
-let g:repo_prefix = 'f'
-if g:repo_path =~# 'configerator'
-      let g:repo_prefix = 'c'
-elseif repo_path =~# 'fbcode'
-      let g:repo_prefix = 'f'
-endif
-
-if (index(g:fbfolders, getcwd()) >= 0)
-      command! -bang -nargs=? -complete=dir Files call fzf#run({
-          \ 'source': "find . -maxdepth 1 -type f",
-          \ 'sink': 'e',
-          \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
-          \'down': '30%'
-          \'window': 'call FloatingFZF("small")'
-          \ })
-endif
-nn <leader>/ :Files <CR>
-
-nnoremap <silent> ,, :call fzf#run({
-          \ 'source': "find . -maxdepth 1 -type f",
-          \ 'sink': 'e',
-          \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
-          \'window': 'call FloatingFZF("small")'
-            \ })<CR>
+" let g:fbfolders = [
+"       \ "/data/users/".$USER."/fbsource",
+"       \ "/data/users/".$USER."/fbsource/fbcode",
+"       \ "/data/users/".$USER."/configerator"
+"       \ ]
+"
+" let g:repo_path = system('hg root')
+" let g:repo_prefix = 'f'
+" if g:repo_path =~# 'configerator'
+"       let g:repo_prefix = 'c'
+" elseif repo_path =~# 'fbcode'
+"       let g:repo_prefix = 'f'
+" endif
+"
+" if (index(g:fbfolders, getcwd()) >= 0)
+"       command! -bang -nargs=? -complete=dir Files call fzf#run({
+"           \ 'source': "find . -maxdepth 1 -type f",
+"           \ 'sink': 'e',
+"           \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
+"           \'down': '30%'
+"           \'window': 'call FloatingFZF("small")'
+"           \ })
+" endif
+" nn <leader>/ :Files <CR>
+"
+" nnoremap <silent> ,, :call fzf#run({
+"           \ 'source': "find . -maxdepth 1 -type f",
+"           \ 'sink': 'e',
+"           \ 'options': '--bind=change:reload:"myles -n 100 --list {q}"',
+"           \'window': 'call FloatingFZF("small")'
+"             \ })<CR>
 
 " Jump to tab: ,t
 function TabName(n)
@@ -598,10 +592,6 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"for Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-
 "to use a universal buffer across all vim instances
 "set clipboard=unnamed
 
@@ -640,33 +630,14 @@ endif
 "for vim-highlightedyank
 let g:highlightedyank_highlight_duration = 500
 
-"for grepping the current word under the cursor - DISABLED for using BigGrep
-"nnoremap <silent> ,g :Rg <C-r><C-w><CR>
+"for grepping the current word under the cursor - DISABLE if using BigGrep
+nnoremap <silent> ,g :Rg <C-r><C-w><CR>
 
 "to show the current context (normally function name)
 nnoremap <C-g> :echo getline(search('\v^[[:alpha:]$_]', "bn", 1, 100))<CR>
 
 "to invoke the video regdef tool on the current word
 "nnoremap ,r :VIDEOTOOLregdefsearch <C-r><C-w>
-
-"goyo settings
-let g:goyo_width = 150
-let g:goyo_height = 75
-let g:goyo_linenr = 1
-function! s:goyo_enter()
-    let g:solarized_termcolors=256
-    set background=dark
-    colorscheme solarized
-endfunction
-
-function! s:goyo_leave()
-    let g:solarized_termcolors=256
-    set background=dark
-    colorscheme solarized
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "to be able to see neovim-node-host
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
@@ -802,7 +773,6 @@ nnoremap ,r :call ShowPopup(expand("<cword>")) <CR>
 function! ShowPopup(content) abort
     let width = 100
     let height = 100
-    let [row, col, corner] = s:GetFloatingPosition(width, height)
     let s:popup_win_id = nvim_open_win(
         \   bufnr('%'),
         \   v:true,
@@ -885,7 +855,6 @@ lua <<EOF
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
     mapping = {
@@ -903,7 +872,6 @@ lua <<EOF
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
@@ -954,7 +922,36 @@ command! -bang -nargs=* Bg
 
 nnoremap <C-p>a :Bg
 
-"for grepping the current word under the cursor
-nnoremap <silent> ,g :Bg <C-r><C-w><CR>
+"for grepping the current word under the cursor, using Meta's big grep
+"nnoremap <silent> ,g :Bg <C-r><C-w><CR>
 
+" use ctrl-[hjkl] to select the active split
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
+colorscheme solarized
+lua <<EOF
+require('solarized').setup {
+  variant = 'summer',
+}
+EOF
+
+" setup noice
+lua <<EOF
+require("noice").setup({
+  routes = {
+    {
+      filter = { error = true},
+      view = "mini",
+    },
+  }
+})
+EOF
+
+:set cmdheight=1
+
+lua <<EOF
+require('mini.indentscope').setup()
+EOF
