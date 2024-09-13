@@ -32,8 +32,6 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'rust-lang/rust.vim'
 
-Plug '~/.vim/plugin/video'
-
 Plug 'majutsushi/tagbar' "to show the current function name in the status line
 
 Plug 'Shougo/neoyank.vim'
@@ -52,16 +50,17 @@ xmap spl <Plug>(Visual-Split-VSSplitBelow)
 
 Plug 'wellle/targets.vim'
 
-" try out new complete plugins
+" install the lsps
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" try out new complete plugins
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-
-"tab-nine via nvim-cmp
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " to dynamically illustrate an indent block
 Plug 'echasnovski/mini.indentscope'
@@ -78,6 +77,7 @@ Plug 'folke/noice.nvim'
 " to show dynamic indent hint
 Plug 'echasnovski/mini.indentscope'
 
+" better substitute
 Plug 'gbprod/substitute.nvim'
 call plug#end()
 
@@ -903,14 +903,6 @@ lua <<EOF
       { name = 'cmdline' }
     })
   })
-
-  -- disable lsp for now: it doesn't work properly because it doesn't know about other dependencies
-  --    -- Setup lspconfig.
-  --    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  --    -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  --    require('lspconfig')['clangd'].setup {
-  --      capabilities = capabilities
-  --    }
 EOF
 
 " using fbgs
@@ -969,4 +961,28 @@ vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
 vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
 vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
 vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
+EOF
+
+" to enable the treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup{
+   highlight = {
+      enable = true,
+   },
+}
+EOF
+
+" to start mason for lsp and related services
+lua <<EOF
+   require("mason").setup()
+   require("mason-lspconfig").setup({
+      ensure_installed = { "rust_analyzer", "clangd", "pylyzer" },
+
+   })
+   -- a macro to setup all the LSP that are installed
+   require("mason-lspconfig").setup_handlers({
+      function(server_name)
+         require("lspconfig")[server_name].setup({})
+      end,
+   })
 EOF
