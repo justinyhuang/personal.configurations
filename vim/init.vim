@@ -66,8 +66,8 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " to dynamically illustrate an indent block
 Plug 'echasnovski/mini.indentscope'
 
-" for solarized scheme
-Plug 'maxmx03/solarized.nvim'
+" the vscode color scheme
+Plug 'Mofiqul/vscode.nvim'
 
 " for using noice
 Plug 'MunifTanjim/nui.nvim'
@@ -932,12 +932,7 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-colorscheme solarized
-lua <<EOF
-require('solarized').setup {
-  variant = 'summer',
-}
-EOF
+colorscheme vscode
 
 " setup noice
 lua <<EOF
@@ -953,9 +948,20 @@ EOF
 
 :set cmdheight=1
 
+" configure the indentscope animation, shape and color
 lua <<EOF
-require('mini.indentscope').setup()
+require('mini.indentscope').setup{
+  draw = {
+    delay = 70,
+    priority = 2,
+    animation = function(s, n)
+      return s/n*20
+    end,
+  },
+  symbol = '│',
+}
 EOF
+hi MiniIndentscopeSymbol guifg=#444444
 
 " to configure the substitute plugin
 lua <<EOF
