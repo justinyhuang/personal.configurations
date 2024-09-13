@@ -78,6 +78,7 @@ Plug 'folke/noice.nvim'
 " to show dynamic indent hint
 Plug 'echasnovski/mini.indentscope'
 
+Plug 'gbprod/substitute.nvim'
 call plug#end()
 
 "---General Settings---
@@ -296,8 +297,8 @@ map <C-LEFT> ;tabp<CR>
 " map <RIGHT> <C-w><right>
 map <DOWN> ;tablast<CR>
 map <UP> ;tabfirst<CR>
-map <LEFT> ;tabnext<CR>
-map <RIGHT> ;tabprev<CR>
+map <LEFT> ;tabprev<CR>
+map <RIGHT> ;tabnext<CR>
 
 " Move cursor together with the screen
 noremap <c-u> j<c-e>
@@ -954,4 +955,12 @@ EOF
 
 lua <<EOF
 require('mini.indentscope').setup()
+EOF
+
+" to configure the substitute plugin
+lua <<EOF
+vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
+vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
+vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
+vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
 EOF
