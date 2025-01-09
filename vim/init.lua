@@ -106,7 +106,14 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 -- JH: I don't like mouse mode as it won't allow me to select text to copy
--- vim.opt.mouse = "a"
+vim.opt.mouse = ""
+
+-- JH: show the column and line of the current cursor
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
+
+-- JH: do not wrap back when searching to the end
+vim.opt.wrapscan = false
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -205,6 +212,9 @@ vim.keymap.set("n", "<leader>e", "<cmd>tabedit<CR>", { desc = "open a new tab fo
 vim.keymap.set("n", "<leader>,", "<cmd>FzfLua files<CR>", { desc = "search for files" })
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<CR>", { desc = "search for buffers" })
 vim.keymap.set("n", "<leader>l", "<cmd>FzfLua blines<CR>", { desc = "search lines within current file" })
+
+-- shortcut for hop.nvim 
+vim.keymap.set("", "<leader>j", "<cmd>HopPattern<CR>", { desc = "jump by search powered by hop.nvim" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -987,6 +997,10 @@ require("lazy").setup({
     opts = {
       files = {
         formatter = "path.filename_first", -- places file name first
+        fd_opts = [[--color=never --type f --no-ignore --hidden --follow --exclude .git]], -- overwrite the default to respect .gitignore by default
+        actions = {
+          ["ctrl-g"] = false, -- disable the toggle_ignore because we will always enable it
+        },
       },
       winopts = {
         preview = {
@@ -1000,47 +1014,73 @@ require("lazy").setup({
     fzf_opts = { ['--preview-window'] = 'nohidden,down,50%' },
   },
   { -- hopefully my default completion engine
-  'saghen/blink.cmp',
-  -- optional: provides snippets for the snippet source
-  dependencies = 'rafamadriz/friendly-snippets',
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = 'rafamadriz/friendly-snippets',
 
-  -- use a release tag to download pre-built binaries
-  version = '*',
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
+    -- use a release tag to download pre-built binaries
+    version = '*',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
 
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    -- 'default' for mappings similar to built-in completion
-    -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-    -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-    -- See the full "keymap" documentation for information on defining your own keymap.
-    keymap = { 
-      preset = 'super-tab',
-      ["<Right>"] = { "accept", "fallback" }, -- use Right to accept the completion
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' for mappings similar to built-in completion
+      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      -- See the full "keymap" documentation for information on defining your own keymap.
+      keymap = { 
+        preset = 'super-tab',
+        ["<Right>"] = { "accept", "fallback" }, -- use Right to accept the completion
+      },
+
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- Will be removed in a future release
+        use_nvim_cmp_as_default = true,
+        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
     },
-
-    appearance = {
-      -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-      -- Useful for when your theme doesn't support blink.cmp
-      -- Will be removed in a future release
-      use_nvim_cmp_as_default = true,
-      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono'
-    },
-
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
+    opts_extend = { "sources.default" }
   },
-  opts_extend = { "sources.default" }
-}
+  { -- to show function / block context 
+    'wellle/context.vim',
+  },
+  { -- the substitute plugin does substitution in one go
+    "gbprod/substitute.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local substitute = require("substitute")
+
+      substitute.setup()
+
+      -- set keymaps
+      local keymap = vim.keymap -- for conciseness
+
+      vim.keymap.set("n", "ss", substitute.operator, { desc = "Substitute with motion" })
+      vim.keymap.set("x", "ss", substitute.visual, { desc = "Substitute in visual mode" })
+    end,
+  },
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran'
+    }
+  }
+
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
 	-- place them in the correct locations.
