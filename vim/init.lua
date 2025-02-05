@@ -202,19 +202,24 @@ vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", ":", ";")
 
 -- arrow keys to navigate tabs
-vim.keymap.set("n", "<down>", "<cmd>tablast<CR>", { desc = "move to the last tab" })
-vim.keymap.set("n", "<up>", "<cmd>tabfirst<CR>", { desc = "move to the first tab" })
-vim.keymap.set("n", "<left>", "<cmd>tabprev<CR>", { desc = "move to the previous tab" })
-vim.keymap.set("n", "<right>", "<cmd>tabnext<CR>", { desc = "move to the next tab" })
+vim.keymap.set("n", "<left>", "<cmd>BufferLineCyclePrev<CR>", { desc = "move to the previous tab" })
+vim.keymap.set("n", "<right>", "<cmd>BufferLineCycleNext<CR>", { desc = "move to the next tab" })
+vim.keymap.set("n", "<up>", "<cmd>BufferLineMovePrev<CR>", { desc = "move to the previous tab" })
+vim.keymap.set("n", "<down>", "<cmd>BufferLineMoveNext<CR>", { desc = "move to the next tab" })
+--vim.keymap.set("n", "<left>", "<cmd>tabprev<CR>", { desc = "move to the previous tab" })
+--vim.keymap.set("n", "<right>", "<cmd>tabnext<CR>", { desc = "move to the next tab" })
 
 -- some common shortcuts
-vim.keymap.set("n", "<leader>e", "<cmd>tabedit<CR>", { desc = "open a new tab for edit" })
-vim.keymap.set("n", "<leader>,", "<cmd>FzfLua files<CR>", { desc = "search for files" })
-vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<CR>", { desc = "search for buffers" })
-vim.keymap.set("n", "<leader>l", "<cmd>FzfLua blines<CR>", { desc = "search lines within current file" })
+-- vim.keymap.set("n", "<leader>e", "<cmd>tabedit<CR>", { desc = "open a new tab for edit" })
+-- vim.keymap.set("n", "<leader>,", "<cmd>FzfLua files<CR>", { desc = "search for files" })
+vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<CR>", { desc = "search for [B]uffers" })
+vim.keymap.set("n", "<leader>l", "<cmd>FzfLua blines<CR>", { desc = "search [L]ines within current file" })
 
 -- shortcut for hop.nvim 
-vim.keymap.set("", "<leader>j", "<cmd>HopPattern<CR>", { desc = "jump by search powered by hop.nvim" })
+vim.keymap.set("", "<leader>f", "<cmd>HopPattern<CR>", { desc = "'[F]ind' by search powered by hop.nvim" })
+
+-- shortcut for fzf-lua
+-- vim.keymap.set("", "<leader>s", "<cmd>FzfLua grep_cword<CR>", { desc = "[S]earch the current word with rg" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -466,19 +471,18 @@ require("lazy").setup({
 	-- },
 
 	-- LSP Plugins
-	{
-		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-		-- used for completion, annotations and signatures of Neovim apis
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
-	{ "Bilal2453/luvit-meta", lazy = true },
+	-- {
+	-- 	-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+	-- 	-- used for completion, annotations and signatures of Neovim apis
+	-- 	"folke/lazydev.nvim",
+	-- 	ft = "lua",
+	-- 	opts = {
+	-- 		library = {
+	-- 			-- Load luvit types when the `vim.uv` word is found
+	-- 			{ path = "luvit-meta/library", words = { "vim%.uv" } },
+	-- 		},
+	-- 	},
+	-- },
 	-- {
 	-- 	-- Main LSP Configuration
 	-- 	"neovim/nvim-lspconfig",
@@ -713,183 +717,22 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 
-	{ -- Autoformat
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_format = "fallback" })
-				end,
-				mode = "",
-				desc = "[F]ormat buffer",
-			},
-		},
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
-				local lsp_format_opt
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					lsp_format_opt = "never"
-				else
-					lsp_format_opt = "fallback"
-				end
-				return {
-					timeout_ms = 500,
-					lsp_format = lsp_format_opt,
-				}
-			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
-			},
-		},
-	},
-
-	{ -- Autocompletion
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			-- Snippet Engine & its associated nvim-cmp source
-			{
-				"L3MON4D3/LuaSnip",
-				build = (function()
-					-- Build Step is needed for regex support in snippets.
-					-- This step is not supported in many windows environments.
-					-- Remove the below condition to re-enable on windows.
-					if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-						return
-					end
-					return "make install_jsregexp"
-				end)(),
-				dependencies = {
-					-- `friendly-snippets` contains a variety of premade snippets.
-					--    See the README about individual language/framework/plugin snippets:
-					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
-				},
-			},
-			"saadparwaiz1/cmp_luasnip",
-
-			-- Adds other completion capabilities.
-			--  nvim-cmp does not ship with all sources by default. They are split
-			--  into multiple repos for maintenance purposes.
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-		},
-		config = function()
-			-- See `:help cmp`
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			luasnip.config.setup({})
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				completion = { completeopt = "menu,menuone,noinsert" },
-
-				-- For an understanding of why these mappings were
-				-- chosen, you will need to read `:help ins-completion`
-				--
-				-- No, but seriously. Please read `:help ins-completion`, it is really good!
-				mapping = cmp.mapping.preset.insert({
-					-- Select the [n]ext item
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					-- Select the [p]revious item
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-
-					-- Scroll the documentation window [b]ack / [f]orward
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-					-- Accept ([y]es) the completion.
-					--  This will auto-import if your LSP supports it.
-					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-
-					-- If you prefer more traditional completion keymaps,
-					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
-					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
-
-					-- Manually trigger a completion from nvim-cmp.
-					--  Generally you don't need this, because nvim-cmp will display
-					--  completions whenever it has completion options available.
-					["<C-Space>"] = cmp.mapping.complete({}),
-
-					-- Think of <c-l> as moving to the right of your snippet expansion.
-					--  So if you have a snippet that's like:
-					--  function $name($args)
-					--    $body
-					--  end
-					--
-					-- <c-l> will move you to the right of each of the expansion locations.
-					-- <c-h> is similar, except moving you backwards.
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
-
-					-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-				}),
-				sources = {
-					{
-						name = "lazydev",
-						-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-						group_index = 0,
-					},
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path" },
-				},
-			})
-		end,
-	},
-
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
-		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
-		priority = 1000, -- Make sure to load this before all the other start plugins.
-		init = function()
+    'rebelot/kanagawa.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
-
+      vim.cmd [[ colorscheme kanagawa ]]
 			-- You can configure highlights by doing something like:
-			vim.cmd.hi("Comment gui=none")
-		end,
-	},
-
+			-- vim.cmd.hi("Comment gui=none")
+    end
+  },
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -935,43 +778,43 @@ require("lazy").setup({
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
-	{ -- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"query",
-				"vim",
-				"vimdoc",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-	},
+	-- { -- Highlight, edit, and navigate code
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	build = ":TSUpdate",
+	-- 	main = "nvim-treesitter.configs", -- Sets main module to use for opts
+	-- 	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+	-- 	opts = {
+	-- 		ensure_installed = {
+	-- 			"bash",
+	-- 			"c",
+	-- 			"diff",
+	-- 			"html",
+	-- 			"lua",
+	-- 			"luadoc",
+	-- 			"markdown",
+	-- 			"markdown_inline",
+	-- 			"query",
+	-- 			"vim",
+	-- 			"vimdoc",
+	-- 		},
+	-- 		-- Autoinstall languages that are not installed
+	-- 		auto_install = true,
+	-- 		highlight = {
+	-- 			enable = true,
+	-- 			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+	-- 			--  If you are experiencing weird indenting issues, add the language to
+	-- 			--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+	-- 			additional_vim_regex_highlighting = { "ruby" },
+	-- 		},
+	-- 		indent = { enable = true, disable = { "ruby" } },
+	-- 	},
+	-- 	-- There are additional nvim-treesitter modules that you can use to interact
+	-- 	-- with nvim-treesitter. You should go explore a few and see what interests you:
+	-- 	--
+	-- 	--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+	-- 	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+	-- 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+	-- },
 	{ -- for navigate between tmux and nvim windows
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
@@ -1001,6 +844,9 @@ require("lazy").setup({
         actions = {
           ["ctrl-g"] = false, -- disable the toggle_ignore because we will always enable it
         },
+      },
+      grep = {
+        rg_opts = "--no-ignore --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
       },
       winopts = {
         preview = {
@@ -1033,8 +879,7 @@ require("lazy").setup({
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
       -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = { 
-        preset = 'super-tab',
-        ["<Right>"] = { "accept", "fallback" }, -- use Right to accept the completion
+        preset = 'enter',
       },
 
       appearance = {
@@ -1051,6 +896,8 @@ require("lazy").setup({
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        -- disable cmdline completion 
+        cmdline = {},
       },
     },
     opts_extend = { "sources.default" }
@@ -1073,12 +920,191 @@ require("lazy").setup({
       vim.keymap.set("x", "ss", substitute.visual, { desc = "Substitute in visual mode" })
     end,
   },
-  {
+  { -- to move around within nvim
     'smoka7/hop.nvim',
     version = "*",
     opts = {
       keys = 'etovxqpdygfblzhckisuran'
     }
+  },
+  { -- to show tab for buffer(s)
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        always_show_bufferline = true,
+        --mode = "tabs",
+        show_tab_indicators = true,
+        numbers = "none",
+      },
+    },
+  },
+  {
+      "kdheepak/lazygit.nvim",
+      lazy = true,
+      cmd = {
+          "LazyGit",
+          "LazyGitConfig",
+          "LazyGitCurrentFile",
+          "LazyGitFilter",
+          "LazyGitFilterCurrentFile",
+      },
+      -- optional for floating window border decoration
+      dependencies = {
+          "nvim-lua/plenary.nvim",
+      },
+      -- setting the keybinding for LazyGit with 'keys' is recommended in
+      -- order to load the plugin when the command is run for the first time
+      keys = {
+          { "<leader>g", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit" }
+      }
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = false },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
+      indent = { enabled = true, chunk = { enable = true } },
+      input = { enabled = false },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+      },
+      picker = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = false },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = true },
+      words = { enabled = false },
+      styles = {
+        notification = {
+          -- wo = { wrap = true } -- Wrap notifications
+        }
+      }
+    },
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>s/", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
+      -- { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+      { "<leader>se", function() Snacks.explorer() end, desc = "File Explorer" },
+      -- find
+      -- { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      -- { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+      -- { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+      -- { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+      -- { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+      { "<leader>sr", function() Snacks.picker.recent() end, desc = "Recent" },
+      -- git
+      -- { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+      -- { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+      -- { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+      -- { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+      -- { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
+      -- { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+      -- { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+      -- Grep
+      -- { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+      -- { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+      -- { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      -- search
+      -- { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
+      -- { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
+      -- { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
+      -- { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      -- { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
+      -- { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+      -- { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      -- { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      -- { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+      -- { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+      { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
+      -- { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+      -- { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      -- { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
+      -- { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+      -- { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
+      -- { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
+      -- { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+      -- { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+      -- { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+      -- { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+      -- LSP
+      -- { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+      -- { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
+      -- { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+      -- { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+      -- { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+      -- { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      -- { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      -- Other
+      -- { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+      -- { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+      -- { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+      -- { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+      -- { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      -- { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+      -- { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
+      -- { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+      -- { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+      { "<leader>t",  function() Snacks.terminal() end, desc = "Toggle Terminal" },
+      -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+      -- { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+      -- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+      -- {
+      --   "<leader>N",
+      --   desc = "Neovim News",
+      --   function()
+      --     Snacks.win({
+      --       file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+      --       width = 0.6,
+      --       height = 0.6,
+      --       wo = {
+      --         spell = false,
+      --         wrap = false,
+      --         signcolumn = "yes",
+      --         statuscolumn = " ",
+      --         conceallevel = 3,
+      --       },
+      --     })
+      --   end,
+      -- }
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        callback = function()
+          -- Setup some globals for debugging (lazy-loaded)
+          _G.dd = function(...)
+            Snacks.debug.inspect(...)
+          end
+          _G.bt = function()
+            Snacks.debug.backtrace()
+          end
+          vim.print = _G.dd -- Override print to use snacks for `:=` command
+
+          -- Create some toggle mappings
+          Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+          Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+          Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+          Snacks.toggle.diagnostics():map("<leader>ud")
+          Snacks.toggle.line_number():map("<leader>ul")
+          Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
+          Snacks.toggle.treesitter():map("<leader>uT")
+          Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+          Snacks.toggle.inlay_hints():map("<leader>uh")
+          Snacks.toggle.indent():map("<leader>ug")
+          Snacks.toggle.dim():map("<leader>uD")
+        end,
+      })
+    end,
   }
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
