@@ -211,8 +211,8 @@ vim.keymap.set("n", "<down>", "<cmd>BufferLineMoveNext<CR>", { desc = "move to t
 
 -- some common shortcuts
 -- vim.keymap.set("n", "<leader>e", "<cmd>tabedit<CR>", { desc = "open a new tab for edit" })
--- vim.keymap.set("n", "<leader>,", "<cmd>FzfLua files<CR>", { desc = "search for files" })
-vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<CR>", { desc = "search for [B]uffers" })
+-- vim.keymap.set("n", "<leader>,", "<cmd>FzfLua files<CR>", { desc = "search for files" }) -- replaced by snacks.picker
+-- vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<CR>", { desc = "search for [B]uffers" }) -- replaced by snacks.picker
 vim.keymap.set("n", "<leader>l", "<cmd>FzfLua blines<CR>", { desc = "search [L]ines within current file" })
 
 -- shortcut for hop.nvim 
@@ -865,7 +865,7 @@ require("lazy").setup({
     dependencies = 'rafamadriz/friendly-snippets',
 
     -- use a release tag to download pre-built binaries
-    version = '*',
+    version = '1.*',
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -896,12 +896,15 @@ require("lazy").setup({
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
-        -- disable cmdline completion 
-        cmdline = {},
+      },
+      -- disable cmdline completion 
+      cmdline = {
+        sources = {},
       },
     },
     opts_extend = { "sources.default" }
   },
+
   { -- to show function / block context 
     'wellle/context.vim',
   },
@@ -987,9 +990,10 @@ require("lazy").setup({
     },
     keys = {
       -- Top Pickers & Explorer
-      { "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-      { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>,", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>s/", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>sg", function() Snacks.picker.grep_word() end, desc = "Grep Current Word" },
       { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
       -- { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>se", function() Snacks.explorer() end, desc = "File Explorer" },
