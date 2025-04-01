@@ -1109,6 +1109,10 @@ require("lazy").setup({
         end,
       })
     end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
   }
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1158,6 +1162,10 @@ require("lazy").setup({
 		},
 	},
 })
+
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.pyright.setup{}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
